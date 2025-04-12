@@ -134,7 +134,7 @@ export const MainView = () => {
     btnNewToDo.on('click', function () {
       let inputValue = input.val().trim();
       if (inputValue === '') {
-        $('.modal2').show(600);
+        $('#exampleModal').show(600);
         return;
       }
 
@@ -166,7 +166,7 @@ export const MainView = () => {
           const audio = new Audio("/trash.mp3");
           audio.preload = "auto"; // Adjust path if needed
           audio.play();
-          $("#exampleModal2").modal("hide"); // Hide modal after deletion
+          $("#exampleModal2").hide(600); // Hide modal after deletion
 
         });
       }
@@ -178,35 +178,35 @@ export const MainView = () => {
     // });
 
     deleteListButton.on('click', function () {
-      let icon = $(this).find("svg"); // Target the SVG inside the trash button
-      icon.addClass("trash-animated");
+      
 
-      // Remove animation class after it finishes
-      setTimeout(() => {
-        icon.removeClass("trash-animated");
-      }, 600);
+      
 
-      // Ensure the list is correctly removed from localStorage first
-      let savedLists = JSON.parse(localStorage.getItem('savedLists')) || [];
-      savedLists = savedLists.filter(list => list.title !== title);
-      localStorage.setItem('savedLists', JSON.stringify(savedLists));
+      let listElement = $(this).closest(".new-list"); // Get the list to delete
+    $("#exampleModal4").show(600); // Show the confirmation modal
 
-      // Remove the list after animation completes
-      setTimeout(() => {
-        $(this).closest(".new-list").remove(); // Ensures the correct list is removed
-      }, 600);
+    $("#confirmDeleteListBtn").off("click").on("click", function () {
+        // Remove the list after confirming
+        let savedLists = JSON.parse(localStorage.getItem("savedLists")) || [];
+        let listTitle = listElement.find(".list-title").text().trim();
+
+        savedLists = savedLists.filter(list => list.title !== listTitle);
+        localStorage.setItem("savedLists", JSON.stringify(savedLists));
+
+        listElement.remove(); // Remove from UI
+        const audio = new Audio("/trash.mp3");
+          audio.preload = "auto"; // Adjust path if needed
+          audio.play();
+        $("#deleteListModal").hide(600); // Hide the modal
+        saveLists(); // Save updates
+    });
     });
 
     $('.modal').on('click', function () {
       $('.modal').hide(700);
     });
 
-    // Make to-dos sortable using jQuery UI
-    // $(".sortable").sortable({
-    //   update: function() {
-    //     saveLists();
-    //   }
-    // });
+  
 
     saveLists();
   }
@@ -292,7 +292,7 @@ export const MainView = () => {
               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-              <p class="dialog-paragraph">No to-dos where found in this list</p>
+              <p class="dialog-paragraph">No to-dos where found in this list. Try adding one!</p>
             </div>
             <div class="modal-footer">
               <button type="button" class="button" data-bs-dismiss="modal">Close</button>
@@ -314,6 +314,24 @@ export const MainView = () => {
             <div class="modal-footer">
               <button type="button" class="btn btn-success" data-bs-dismiss="modal">Cancel</button>
               <button type="button" class="btn btn-danger" id="confirmDeleteBtn">Delete</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="modal" id="exampleModal4" tabindex="-1" aria-labelledby="deleteConfirmLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="deleteConfirmLabel">Confirm Deletion</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              Are you sure you want to delete this list?
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-success" data-bs-dismiss="modal">Cancel</button>
+              <button type="button" class="btn btn-danger" id="confirmDeleteListBtn">Delete</button>
             </div>
           </div>
         </div>
