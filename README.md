@@ -11,8 +11,9 @@ This repository contains a simple responsive to-do app developed with React, jQu
 - Upon deleting the list \ all to-dos the user can confirm \ cancel their choice
 - All lists are edited independently.
 - The app has a live search that filters the lists \ to-dos
+- Some button clicks produce simple sound notifications
 - The app is responsive
-- All changes are auto-saved to local storage
+- All changes are auto-saved to local storage (the user is notified about updates)
 - The app can be installed on desktop \ mobilde device (PWA App)
   
 ## Technologies Used:
