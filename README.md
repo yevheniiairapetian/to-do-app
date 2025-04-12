@@ -6,7 +6,7 @@ This repository contains a simple responsive to-do app developed with React, jQu
 ## Key Features:
 - A simple "How-To" guide for desktop and mobile users
 - Create \ edit\ delete to-do lists
-- Add \ edit \ delete to-dos ()one by one or all at once
+- Add \ edit \ delete to-dos (one by one or all at once)
 - Mark to-dos as done (strike through)
 - Upon deleting the list \ all to-dos the user can confirm \ cancel their choice
 - All lists are edited independently.
