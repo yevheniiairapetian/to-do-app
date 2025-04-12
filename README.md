@@ -10,7 +10,7 @@ This repository contains a simple responsive to-do app developed with React, jQu
 - Mark to-dos as done (strike through)
 - Upon deleting the list \ all to-dos the user can confirm \ cancel their choice
 - All lists are edited independently.
-- Has a live search that filters the lists / to-dos
+- The app has a live search that filters the lists / to-dos
 - The app is responsive
 - All changes are auto-saved to local storage
 - The app can be installed on desktop \ mobilde device (PWA App)
