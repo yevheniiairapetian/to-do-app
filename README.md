@@ -13,8 +13,8 @@ This repository contains a simple responsive to-do app developed with React, jQu
 - The app has a live search that filters the lists \ to-dos
 - Some button clicks produce simple sound notifications
 - The app is responsive
-- All changes are auto-saved to local storage (the user is notified about updates)
-- The app can be installed on desktop \ mobilde device (PWA App)
+- All changes are auto-saved to local storage (no need to use any UI elements to save the changes and the user is notified about updates)
+- The app can be installed on desktop \ mobile device (PWA App)
   
 ## Technologies Used:
 - HTNL5
