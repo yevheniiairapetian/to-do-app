@@ -18,7 +18,7 @@
       "sizes": "512x512"
     }
   ],
-  "start_url": "https://to-do-min.vercel.app",
+  "start_url": "https://to-do-min.vercel.app/#/",
   "display": "standalone",
   "theme_color": "#ffffff",
   "background_color": "#ffffff"
