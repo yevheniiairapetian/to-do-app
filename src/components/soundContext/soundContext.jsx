@@ -1,0 +1,4 @@
+import React, { createContext, useContext, useState, useEffect } from 'react'; 
+const SoundContext = createContext(); 
+export const SoundProvider = ({ children }) => { const [soundsEnabled, setSoundsEnabled] = useState(true); useEffect(() => { const savedSoundsEnabled = localStorage.getItem('soundsEnabled'); if (savedSoundsEnabled !== null) { setSoundsEnabled(JSON.parse(savedSoundsEnabled)); } }, []); const toggleSounds = () => { const newSoundsEnabled = !soundsEnabled; setSoundsEnabled(newSoundsEnabled); localStorage.setItem('soundsEnabled', JSON.stringify(newSoundsEnabled)); }; return ( <SoundContext.Provider value={{ soundsEnabled, toggleSounds }}> {children} </SoundContext.Provider> ); };
+export const useSoundSettings = () => useContext(SoundContext);
