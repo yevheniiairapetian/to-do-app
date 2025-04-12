@@ -1,6 +1,59 @@
-# Getting Started with Create React App
+# To-do-list app
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Description:
+This repository contains a simple responsive to-do app developed with React, jQuery, and Bootstrap
+
+## Key Features:
+- A simple "How-To" guide for desktop and mobile users
+- Create \ edit\ delete to-do lists
+- Add \ edit \ delete to-dos ()one by one or all at once
+- Mark to-dos as done (strike through)
+- Upon deleting the list \ all to-dos the user can confirm \ cancel their choice
+- All lists are edited independently.
+- The app is responsive
+- All changes are auto-saved to local storage
+- The app can be installed on desktop \ mobilde device (PWA App)
+  
+## Technologies Used:
+- HTNL5
+- CSS3
+- jQuery
+- Bootstrap
+- React
+- PWA
+- Service Worker
+
+## When installed like a Progressive Web App, it allows to:
+- Resemble a native-app experience.
+- Have an improved user experience
+- Experience cross-platform compatibility
+- Make use of faster loading times
+- Use offline accessibility
+- Have a smaller size than a native desktop app
+- Access the app quickly via a mobile home screen, a Windows/Mac taskbar, etc
+
+Read more about the Progressive Web Apps [here](https://www.itaims.com/blog/benefits-of-progressive-web-apps-pwa-advantages-and-disadvantages)
+
+## Project dependencies:
+- jQuery for DOM manipulation and interactivity
+- React as Javascript library
+- Bootstrap for design/responsive design, accordions
+- Vercel for deployment
+
+## Live Version:
+The app is live [here](https://to-do-min.vercel.app/)
+
+## Clone and Preview
+To clone the app use the following command:
+```console git clone git@github.com:yevheniiairapetian/to-do-app```
+Or download directly by clicking on <> Code button > Download ZIP. Make sure you have Node installed on your machine. To check if you have Node installed, run the ```node -v``` command in the terminal. If Node is not installed, use the preferred package manager:
+- For npm on Windows, run the ```npm install nodejs``` command 
+- For Mac, run the ```brew install node``` command
+- For Linux Debian/Ubuntu-based systems run the ```sudo apt-get install nodejs``` command
+- For Red Hat/Fedora-based systems run the ```sudo yum install nodejs```
+command
+2. Then get back to the project folder and use the ```cd to-do-app``` terminal command. Then run the ```npm i``` command (or similar, depending on the package manager) to install the project dependencies
+  3. After that, follow the scripts in the section below.
 
 ## Available Scripts
 
@@ -39,12 +92,10 @@ Instead, it will copy all the configuration files and the transitive dependencie
 
 You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
 
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
+## Contact:
+Feel free to contact me via[ LinkedIn](https://www.linkedin.com/in/yevheniiairapetian/) or  
+[email](mailto:contact@yevheniiairapetian.com) or 
+via the contact information on my [portfolio](https://yevheniiairapetian.com/#/contact) 
 ### Code Splitting
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
