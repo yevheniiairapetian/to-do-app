@@ -14,6 +14,17 @@ import { useSoundSettings } from './../soundContext/soundContext';
 
 export const ToDoView = () => {
 
+  window.addEventListener("resize", () => {
+    const isLandscape = window.innerWidth > window.innerHeight;
+    const footer = document.querySelector("footer.footer");
+
+    if (isLandscape && window.innerHeight < 500) {
+        footer.style.display = "none"; // Hide if screen height shrinks
+    } else {
+        footer.style.display = "block"; // Show otherwise
+    }
+});
+
   $(document).ready(function () {
     $("#searchField").on("input", function () {
       let searchText = $(this).val().toLowerCase().trim();
@@ -251,6 +262,7 @@ export const ToDoView = () => {
   }
 
   return (
+    // <>
     <div className="container-fluid app-container">
       <Navigation />
       <Accordions />
@@ -337,7 +349,9 @@ export const ToDoView = () => {
         </div>
       </div>
 
-      {/* <Footer /> */}
+     
     </div>
+    //  <Footer />
+    // </>
   )
 }

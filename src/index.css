@@ -13,11 +13,11 @@ html, body{
 	height: 100%;
 }
 
+
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
-
 
 
 @import url(https://fonts.googleapis.com/css?family=Open+Sans:400italic,400);
@@ -32,7 +32,10 @@ font: normal normal 14px/16px "Open Sans", sans-serif;
 height:100%;
 min-height:100vh;
 display: flex;
-flex-direction: column;
+    flex-direction: column;
+    min-height: 100vh;
+    /* min-height: 100%; */
+	flex-grow: 1;
 
 }
 
@@ -46,12 +49,17 @@ div.row{
 
 
 
-footer{
+footer.footer{
+	
 	padding:30px 0;
-	width: 100%;
-	height:120px;
+	position: sticky; /* Stick it to the bottom */
+    bottom: 0;
+    width: 100%;
+    height: 120px;
 	background-color: #cfe2ff;
-	margin-top:auto;
+	margin-top:auto ;
+	/* visibility: visible !important; */
+	
 }
 
 .container-fluid{
@@ -72,13 +80,10 @@ input.search-input{
 	width:220px;
 }
 
-.footer{
-	position: absolute;
-    bottom: 0;
-    width: 100%;
-	margin-top:auto;
-	padding: 30px 0;
 
+.col{
+	padding-left: 0 !important;
+	padding-right: 0 !important;
 }
 
 form {
@@ -366,19 +371,15 @@ div > crossOutButton {
 	margin-bottom:0px;
 }
 
-@media screen and (max-width:770px){
-	footer{
-		position: fixed !important;
-		bottom:0;
-	}
 
-	.new-list:last-child{
-		margin-bottom: 180px;
-	}
 
-	
+
+
+@media (min-aspect-ratio: 1/1) {
+	footer.footer{
+		
+	}
 }
-
 
 
 @media screen and (max-width:275px){
