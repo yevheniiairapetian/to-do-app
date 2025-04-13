@@ -13,8 +13,11 @@ import $ from 'jquery';
 
 export const Navigation = () => {
 
+  
 
   $(document).ready(function () {
+
+    
     let storedUsername = localStorage.getItem("username");
 
     if (!storedUsername) {
@@ -66,38 +69,27 @@ function loadArchivedLists() {
   });
 } 
 
-$("#viewArchived").click(function () {
-  loadArchivedLists();
-});
+
 
   return (
 
     <>
       <>
 
+      
         <Navbar expand="md" className="navbar sticky-top mb-3">
-          <Container className="nav-container" fluid>
-            <Navbar.Brand href="/">
-              <h3 className="ps-3 pt-2">To Do <small className="text-muted">List App</small></h3>
-
-            </Navbar.Brand>
-            <Navbar.Toggle aria-controls={`offcanvasNavbar-expand-md`} />
-            <Navbar.Offcanvas
-              id={`offcanvasNavbar-expand-md`}
-              aria-labelledby={`offcanvasNavbarLabel-expand-md`}
-              placement="end"
-            >
-              <Offcanvas.Header closeButton>
-                <Offcanvas.Title id={`offcanvasNavbarLabel-expand-md}`}>
-                  Menu
-                </Offcanvas.Title>
-              </Offcanvas.Header>
-              <Offcanvas.Body>
-                <Nav className="justify-content-end flex-grow-1 pe-3">
-                  <Nav.Link href="/">Home</Nav.Link>
-
-                </Nav>
-                <Form className="d-flex">
+      <Container className="nav-container" fluid>
+        <Navbar.Brand href="/">
+          <h3 className="ps-3 pt-2">
+            To Do <small className="text-muted">List App</small>
+          </h3>
+        </Navbar.Brand>
+        <Navbar.Toggle aria-controls="navbar-nav" />
+        <Navbar.Collapse id="navbar-nav" className="justify-content-end">
+          <Nav className="justify-content-end flex-grow-1 pe-3">
+            <Nav.Link href="/">Home</Nav.Link>
+          </Nav>
+          <Form className="d-flex">
                   <Form.Control
                     type="search"
                     placeholder="Search for lists and to-dos"
@@ -107,13 +99,12 @@ $("#viewArchived").click(function () {
                   />
                   {/* <Button variant="outline-success">Search</Button> */}
                 </Form>
-                <Navbar.Text id="signedInText" className="pl-4 pr-4">
+          <Navbar.Text id="signedInText" className="pl-4 pr-4">
                   Signed in as: <Nav.Link href="/"></Nav.Link>
                 </Navbar.Text>
-              </Offcanvas.Body>
-            </Navbar.Offcanvas>
-          </Container>
-        </Navbar>
+        </Navbar.Collapse>
+      </Container>
+    </Navbar>
 
       </>
 

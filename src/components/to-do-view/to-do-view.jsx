@@ -23,28 +23,50 @@ export const ToDoView = () => {
     } else {
         footer.style.display = "block"; // Show otherwise
     }
+
+
 });
 
+
+
+
+
   $(document).ready(function () {
-    $("#searchField").on("input", function () {
-      let searchText = $(this).val().toLowerCase().trim();
 
-      $(".new-list").each(function () {
-        let listTitle = $(this).find(".list-title").text().toLowerCase();
-        let matchFound = listTitle.includes(searchText);
-
-        $(this).find("ol li").each(function () {
-          let todoText = $(this).text().toLowerCase();
-          if (todoText.includes(searchText)) {
-            matchFound = true;
-          }
-        });
-
-        // Show lists that match the search, hide others
-        $(this).toggle(matchFound);
-      });
-    });
+    
+  
+    $('#offcanvasNavbar-expand-md').on('hidden.bs.offcanvas', function () {
+      let storedText = localStorage.getItem("searchTemp") || "";
+      $("#searchField").val(storedText).trigger("input"); // Restore search after closing
   });
+  
+  // Prevent form submission reload
+  $("#searchField").on("keypress", function (event) {
+      if (event.key === "Enter") {
+          event.preventDefault(); // Prevents page reload
+      }
+  });
+  
+  $("#searchField").on("input", function () {
+      let searchText = $(this).val().toLowerCase().trim();
+  
+      $(".new-list").each(function () {
+          let listTitle = $(this).find(".list-title").text().toLowerCase();
+          let matchFound = listTitle.includes(searchText);
+  
+          $(this).find("ol li").each(function () {
+              let todoText = $(this).text().toLowerCase();
+              if (todoText.includes(searchText)) {
+                  matchFound = true;
+              }
+          });
+  
+          // Show lists that match the search, hide others
+          $(this).toggle(matchFound);
+      });
+  });
+});
+  
 
   $(document).ready(() => {
     loadLists();
@@ -86,8 +108,6 @@ export const ToDoView = () => {
     let listTitle = $("<h4 class='list-title' contenteditable='true'></h4>").text(title);
     div.append(listTitle);
 
-    let archiveButton = $('<div class="archive-list button" title="Archive this list">📦</div>');
-div.append(archiveButton); 
 
     let updateEdits = $('<p class="update">All your edits are automatically saved</p>').show();
     div.append(updateEdits);
@@ -140,38 +160,6 @@ div.append(archiveButton);
       }
     });
 
-    archiveButton.on('click', function () {
-      let listElement = $(this).closest(".new-list");
-      let listTitle = listElement.find(".list-title").text().trim();
-      let todos = [];
-  
-      listElement.find("ol li").each(function () {
-          let cleanText = $(this).clone().children().remove().end().text().trim();
-          todos.push({ text: cleanText, completed: $(this).hasClass("strike") });
-      });
-  
-      // Get existing archived lists from localStorage
-      let archivedLists = JSON.parse(localStorage.getItem('archivedLists')) || [];
-  
-      // Add the archived list
-      archivedLists.push({ title: listTitle, todos });
-  
-      // Update localStorage
-      localStorage.setItem('archivedLists', JSON.stringify(archivedLists));
-  
-      // Remove from UI & saved lists
-      listElement.remove();
-      let savedLists = JSON.parse(localStorage.getItem('savedLists')) || [];
-      savedLists = savedLists.filter(list => list.title !== listTitle);
-      localStorage.setItem('savedLists', JSON.stringify(savedLists));
-  
-      saveLists();
-  });
-
-
-
-
- 
 
     listTitle.on('input', function () {
       updateEdits.text("Updates saved!").show();

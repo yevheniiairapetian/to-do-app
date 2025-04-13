@@ -42,7 +42,8 @@ export const MainView = () => {
               element={
                 <>
 
-                  <Col>
+<div className="app-container">
+<Col className="main-content">
                     <ToDoView className=""
 
                     />
@@ -52,7 +53,7 @@ export const MainView = () => {
                   </Col>
 
                   <Footer/>
-
+</div>
                 </>
               }
 
