@@ -82,12 +82,14 @@ padding-bottom: 80px;
 
 }
 
+
 .nav-container{
 	background-color: #cfe2ff;
 }
 
 input.search-input{
 	width:220px;
+	margin-right: 14px;
 }
 
 
@@ -183,6 +185,10 @@ border-bottom-left-radius: 0px 0px;
 border-left: 1px solid #fff;
 }
 
+#navProfilePic{
+	margin-left: 16px;
+	margin-right: 16px;
+}
 
 .clear-ul{
 	border-top-left-radius: 0px 0px;
@@ -391,7 +397,14 @@ div > crossOutButton {
 		margin-left:20px !important;
 	}
 	span#signedInText{
-		padding-left: 22px !important;
+		padding-left: 16px !important;
+	}
+	#navProfilePic{
+		margin-left: 20px;
+		margin-right: 0px;
+	}
+	form{
+		margin-bottom: 8px;
 	}
 }
 
