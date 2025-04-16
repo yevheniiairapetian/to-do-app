@@ -97,6 +97,8 @@ const handleCancelReset = () => {
     setUsername(usernameInput);
     setInputValue(usernameInput);
     setShowModal(false);
+    // **Reload the page to apply changes**
+    window.location.reload();
   };
 
   // Search filtering logic
