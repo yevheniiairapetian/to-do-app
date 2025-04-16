@@ -135,6 +135,10 @@ $(document).ready(function () {
     div.append(form);
 
     let input = $('<input type="text" class="input-text" tabindex="1" placeholder="Feed Jelly Bean"/>');
+    input.on("input", function () {
+      updateEdits.text("Waiting for edits..").show();
+  });
+  
     form.append(input);
 
     let btnClearInput = $('<div class="clear-input button" title="Clear input" data-bs-toggle="tooltip" data-bs-title="Click to clear the input field"><svg height="20" viewBox="0 0 32 32" width="20" xmlns="http://www.w3.org/2000/svg"><path d="m20 18h6v2h-6z" transform="matrix(-1 0 0 -1 46 38)"/><path d="m24 26h6v2h-6z" transform="matrix(-1 0 0 -1 54 54)"/><path d="m22 22h6v2h-6z" transform="matrix(-1 0 0 -1 50 46)"/><path d="m17.0029 20a4.8952 4.8952 0 0 0 -2.4044-4.1729l7.4015-12.8271-1.7309-1-7.5758 13.126a5.6988 5.6988 0 0 0 -5.2433 1.5029c-3.7436 3.6111-3.4537 12.0532-3.44 12.4111a1 1 0 0 0 1 .96h14.9912a1 1 0 0 0 .6-1.8c-3.5397-2.6561-3.5983-8.1463-3.5983-8.2zm-5.0729-3.0029a3.11 3.11 0 0 1 3.0741 3.0029c0 .0381.0019.208.0168.4688l-5.8994-2.6236a3.8 3.8 0 0 1 2.8085-.8481zm3.5194 11.0029a5.2 5.2 0 0 1 -1.4494-3h-2a6.4993 6.4993 0 0 0 .9684 3h-2.2233a16.6166 16.6166 0 0 1 -.7451-4h-2a17.3424 17.3424 0 0 0 .6652 4h-2.6652c.031-1.8364.29-5.8921 1.8027-8.5527l7.533 3.35a13.0253 13.0253 0 0 0 2.2611 5.2027z"/><path d="m0 0h32v32h-32z" fill="none"/></svg></div>');
@@ -280,18 +284,20 @@ $(document).ready(function () {
         saveLists();
     });
 
+    let updateEdits = $(".update"); // Select the update status element
+
     // Restore long press to strike through
     let pressTimer;
-    li.on('mousedown touchstart', function (event) {
-      pressTimer = setTimeout(function () {
-          li.toggleClass("strike");
-          saveLists();
-      }, 500);
-  }).on('mouseup touchend', function () {
-      clearTimeout(pressTimer);
-  }).on('mousemove', function () {
-      clearTimeout(pressTimer); // Cancels long press if the user is actually moving the item
-  });
+    li.on('mousedown touchstart', function () {
+        pressTimer = setTimeout(function () {
+            li.toggleClass("strike");
+            saveLists();
+        }, 500);
+    }).on('mouseup touchend', function () {
+        clearTimeout(pressTimer);
+    }).on('mousemove', function () {
+        clearTimeout(pressTimer); // Cancels long press if the user is actually moving the item
+    });
 
     // Edit function
     editButton.on('click', function () {
@@ -302,6 +308,13 @@ $(document).ready(function () {
             existingInput.remove();
             li.contents().filter(function () { return this.nodeType === 3; }).remove();
             li.prepend(newText);
+            updateEdits.text("Edits saved!").show();
+
+            // **Automatically revert "Edits saved!" back to "All your edits are automatically saved"**
+            setTimeout(() => {
+                updateEdits.text("All your edits are automatically saved").show();
+            }, 3000); // Delay of 3 seconds
+
             saveLists();
             return;
         }
@@ -309,12 +322,21 @@ $(document).ready(function () {
         let currentText = li.contents().not(editButton).not(deleteButton).text().trim();
         let input = $('<input type="text" class="edit-input" />').val(currentText);
 
+        updateEdits.text("Editing..").show(); // Show "Editing.." while editing
+
         input.on('keypress', function (event) {
             if (event.key === 'Enter') {
                 let newText = input.val().trim();
                 input.remove();
                 li.contents().filter(function () { return this.nodeType === 3; }).remove();
                 li.prepend(newText);
+                updateEdits.text("Edits saved!").show();
+
+                // **Automatically revert "Edits saved!" back to "All your edits are automatically saved"**
+                setTimeout(() => {
+                    updateEdits.text("All your edits are automatically saved").show();
+                }, 3000); // Delay of 3 seconds
+
                 saveLists();
             }
         });
@@ -327,6 +349,30 @@ $(document).ready(function () {
 
     return li;
 }
+
+// **Update status when typing in the input field to add a to-do**
+// **Update status when typing in the input field to add a to-do**
+$(".input-text").on("input", function () {
+  let updateEdits = $(this).closest(".new-list").find(".update");
+
+    if ($(this).val().trim() === "") {
+        updateEdits.text("All your edits are automatically saved").show();
+    } else {
+        updateEdits.text("Waiting for edits..").show();
+    }
+});
+
+// **Ensure reset also happens when the sweep button is clicked**
+$(".clear-input").on("click", function () {
+  let parentList = $(this).closest(".new-list");
+  parentList.find(".input-text").val(""); // Clear input field
+  parentList.find(".update").text("All your edits are automatically saved").show(); // Reset status
+});
+
+
+// Ensure reset also happens when the sweep button is clicked
+
+
 
 // **Enable Sorting for To-Dos**
 $(function () {
