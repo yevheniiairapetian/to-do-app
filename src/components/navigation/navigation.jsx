@@ -13,7 +13,22 @@ export const Navigation = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const [showDeleteImageModal, setShowDeleteImageModal] = useState(false);
   const [userImage, setUserImage] = useState(localStorage.getItem("userImage") || "https://th.bing.com/th/id/OIP.lvbbUeXuqJfLLn8UKNFoZgAAAA?w=138&h=150&c=7&r=0&o=5&dpr=1.3&pid=1.7");
-  
+  const [showResetModal, setShowResetModal] = useState(false);
+
+const handleResetApp = () => {
+    localStorage.clear(); // Clears all saved data
+    window.location.reload(); // Refresh the page to apply reset
+};
+
+// Button to trigger the reset confirmation modal
+const handleOpenResetModal = () => {
+    setShowResetModal(true);
+};
+
+// Close modal without resetting
+const handleCancelReset = () => {
+    setShowResetModal(false);
+};
   const handleImageClick = () => {
       setShowDeleteImageModal(true); // Show modal when clicking profile picture or pencil icon
   };
@@ -118,6 +133,26 @@ export const Navigation = () => {
 
   return (
     <>
+    
+        {showResetModal && (
+            <div className="modal" id="resetAppModal" style={{ display: "block" }}>
+                <div className="modal-dialog">
+                    <div className="modal-content">
+                        <div className="modal-header">
+                            <h6 className="modal-title">Reset App</h6>
+                            <button type="button" className="btn-close" onClick={handleCancelReset}></button>
+                        </div>
+                        <div className="modal-body">
+                            <p>Are you sure you want to reset the app? This will remove all saved data.</p>
+                        </div>
+                        <div className="modal-footer">
+                            <button className="btn btn-danger" onClick={handleResetApp}>Reset</button>
+                            <button className="btn btn-secondary" onClick={handleCancelReset}>Cancel</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        )}
     {showDeleteImageModal && (
         <div className="modal" id="deleteImageModal" style={{ display: "block" }}>
             <div className="modal-dialog">
@@ -228,6 +263,10 @@ export const Navigation = () => {
                   <span className="mx-2">{username}</span>
                 )}
               </span>
+               {/* Reset App Button */}
+        <button className="btn btn-warning" style={{ position: "fixed", bottom: "20px", right: "20px", zIndex: 1000 }} onClick={handleOpenResetModal}>
+            Reset App
+        </button>
             </Navbar.Text>
           </Navbar.Collapse>
         </Container>
