@@ -191,7 +191,7 @@ export const ToDoView = () => {
 
       saveLists();
       let updateEdits = div.find(".update"); // Ensures the correct update element is targeted
-      updateEdits.text("Edits saved!").show();
+      updateEdits.text("To-do was added!").show();
 
       // Automatically revert after 3 seconds
       setTimeout(() => {
@@ -273,23 +273,33 @@ export const ToDoView = () => {
 
     btnClearLi.on('click', function () {
       let todoCount = ol.children("li").length;
+      let updateEdits = div.find(".update"); // Ensure correct update text element
+  
       if (todoCount === 0) {
-        // Show "No to-dos found" modal
-        $("#exampleModal3").show(600);
+          // Show "No to-dos found" modal
+          $("#exampleModal3").show(600);
       } else {
-        $('#exampleModal2').show(600);
-        $("#confirmDeleteBtn").off("click").on("click", function () {
-          ol.empty(); // Clear all to-do items
-          saveLists(); // Save changes to localStorage
-          const audio = new Audio("/trash.mp3");
-          audio.preload = "auto"; // Adjust path if needed
-          audio.play();
-          $("#exampleModal2").hide(600); // Hide modal after deletion
-
-        });
+          $('#exampleModal2').show(600);
+          $("#confirmDeleteBtn").off("click").on("click", function () {
+              ol.empty(); // Clear all to-do items
+              saveLists(); // Save changes to localStorage
+  
+              // **Update text to "Edits saved!"**
+              updateEdits.text("The list was cleared!").show();
+  
+              // **Automatically revert after 2 seconds**
+              setTimeout(() => {
+                  updateEdits.text("All your edits are automatically saved").show();
+              }, 2000);
+  
+              const audio = new Audio("/trash.mp3");
+              audio.preload = "auto"; // Adjust path if needed
+              audio.play();
+              $("#exampleModal2").hide(600); // Hide modal after deletion
+          });
       }
-
-    });
+  });
+  
 
     // saveEdits.on('click', function() {
     //   updateEdits.text("Edits saved").show();
@@ -501,12 +511,12 @@ export const ToDoView = () => {
         <div class="modal-dialog">
           <div class="modal-content">
             <div class="modal-header">
-              <h4 class="modal-title fs-5" id="exampleModalLabel">Notice</h4>
+              <h4 class="modal-title fs-5" id="exampleModalLabel">Heads-up</h4>
               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-              <p class="dialog-paragraph">Please type in the new to-do and click <em>"Add New To-do"
-                button or press "Enter" key</em>.</p>
+              <p class="dialog-paragraph">Please type in the new to-do and click <strong>"Add a To-do"
+                button</strong> or press <strong>"Enter"</strong> key.</p>
             </div>
             <div class="modal-footer">
               <button type="button" class="button" data-bs-dismiss="modal">Close</button>
@@ -523,7 +533,7 @@ export const ToDoView = () => {
         <div class="modal-dialog">
           <div class="modal-content">
             <div class="modal-header">
-              <h4 class="modal-title fs-5" id="exampleModalLabel">Notice</h4>
+              <h4 class="modal-title fs-5" id="exampleModalLabel">Heads-up</h4>
               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">

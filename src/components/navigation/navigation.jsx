@@ -11,7 +11,21 @@ export const Navigation = () => {
   const [inputValue, setInputValue] = useState(username);
   const [showModal, setShowModal] = useState(!localStorage.getItem("username")); // Show modal only on first visit
   const [searchQuery, setSearchQuery] = useState("");
-
+  const [showDeleteImageModal, setShowDeleteImageModal] = useState(false);
+  const [userImage, setUserImage] = useState(localStorage.getItem("userImage") || "https://th.bing.com/th/id/OIP.lvbbUeXuqJfLLn8UKNFoZgAAAA?w=138&h=150&c=7&r=0&o=5&dpr=1.3&pid=1.7");
+  
+  const handleImageClick = () => {
+      setShowDeleteImageModal(true); // Show modal when clicking profile picture or pencil icon
+  };
+  
+  const handleDeleteImage = () => {
+      localStorage.removeItem("userImage"); // Remove image from storage
+      setUserImage("https://th.bing.com/th/id/OIP.lvbbUeXuqJfLLn8UKNFoZgAAAA?w=138&h=150&c=7&r=0&o=5&dpr=1.3&pid=1.7"); // Set placeholder
+      setShowDeleteImageModal(false); // Close modal
+  };
+  
+  // Determines whether to show pencil icon
+  const showPencilIcon = userImage !== "https://th.bing.com/th/id/OIP.lvbbUeXuqJfLLn8UKNFoZgAAAA?w=138&h=150&c=7&r=0&o=5&dpr=1.3&pid=1.7";
   useEffect(() => {
     document.getElementById("navProfilePic").src =
       localStorage.getItem("userImage") ||
@@ -104,6 +118,25 @@ export const Navigation = () => {
 
   return (
     <>
+    {showDeleteImageModal && (
+        <div className="modal" id="deleteImageModal" style={{ display: "block" }}>
+            <div className="modal-dialog">
+                <div className="modal-content">
+                    <div className="modal-header">
+                        <h6 className="modal-title">Delete Image</h6>
+                        <button type="button" className="btn-close" onClick={() => setShowDeleteImageModal(false)}></button>
+                    </div>
+                    <div className="modal-body">
+                        <p>You are about to delete your profile image. Are you sure?</p>
+                    </div>
+                    <div className="modal-footer">
+                        <button className="btn btn-danger" onClick={handleDeleteImage}>Delete</button>
+                        <button className="btn btn-secondary" onClick={() => setShowDeleteImageModal(false)}>Cancel</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    )}
       {showModal && (
         <>
           <div className="modal" id="exampleModal6" style={{ display: "block" }}>
@@ -159,7 +192,24 @@ export const Navigation = () => {
             </Form>
 
             {/* Profile Picture */}
-            <img id="navProfilePic" alt="Profile" className="pl-2 pr-2 rounded-circle" width="40" height="40" />
+           {/* Profile Picture (Now Clickable) */}
+        <div style={{ position: "relative", display: "inline-block" }}>
+            <img 
+                id="navProfilePic" 
+                src={userImage}
+                alt="Profile" 
+                className="pl-2 pr-2 rounded-circle" 
+                width="40" 
+                height="40"
+            />
+
+            {/* Pencil Icon (Only Show When Profile Picture Exists) */}
+            {showPencilIcon && (
+              <svg onClick={handleImageClick} 
+              style={{ position: "absolute", right: "10px", bottom: "0", cursor: "pointer" }} width="16px" height="16px" viewBox="0 0 24 24" fill="none"><path d="M4 20h16v2H4zM4.293 16.293l11.293-11.293 3.414 3.414-11.293 11.293H4v-3.414zM19.707 6.293l-3.414-3.414 1.414-1.414 3.414 3.414z" fill="currentColor"/></svg>
+                
+            )}
+        </div>
 
             {/* Editable Username */}
             <Navbar.Text id="signedInText" className="pl-2 pr-4" style={{ cursor: "pointer" }}>
