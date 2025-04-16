@@ -1,5 +1,7 @@
 import React from "react";
-import $ from 'jquery';
+import $ from "jquery";
+import "jquery-ui-dist/jquery-ui";
+
 import { Navbar, Button, Container, Row, Col, Nav, Image } from "react-bootstrap";
 import { Accordions } from "../accordions/accordions";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -27,9 +29,26 @@ export const ToDoView = () => {
 
 });
 
+$(document).ready(function () {
+  $(".sortable").sortable({
+      start: function () {
+          clearTimeout(pressTimer); // Stop long press when dragging starts
+      },
+      stop: function () {
+          saveLists(); // Save new order after dragging stops
+      }
+  });
+});
 
 
 
+$(document).ready(function () {
+  $(".sortable").sortable({
+      update: function () {
+          saveLists();
+      }
+  });
+})
 
   $(document).ready(function () {
 
@@ -118,7 +137,7 @@ export const ToDoView = () => {
     let input = $('<input type="text" class="input-text" tabindex="1" placeholder="Feed Jelly Bean"/>');
     form.append(input);
 
-    let btnClearInput = $('<div class="clear-input button" data-bs-toggle="tooltip" data-bs-title="Click to clear the input field"><svg height="20" viewBox="0 0 32 32" width="20" xmlns="http://www.w3.org/2000/svg"><path d="m20 18h6v2h-6z" transform="matrix(-1 0 0 -1 46 38)"/><path d="m24 26h6v2h-6z" transform="matrix(-1 0 0 -1 54 54)"/><path d="m22 22h6v2h-6z" transform="matrix(-1 0 0 -1 50 46)"/><path d="m17.0029 20a4.8952 4.8952 0 0 0 -2.4044-4.1729l7.4015-12.8271-1.7309-1-7.5758 13.126a5.6988 5.6988 0 0 0 -5.2433 1.5029c-3.7436 3.6111-3.4537 12.0532-3.44 12.4111a1 1 0 0 0 1 .96h14.9912a1 1 0 0 0 .6-1.8c-3.5397-2.6561-3.5983-8.1463-3.5983-8.2zm-5.0729-3.0029a3.11 3.11 0 0 1 3.0741 3.0029c0 .0381.0019.208.0168.4688l-5.8994-2.6236a3.8 3.8 0 0 1 2.8085-.8481zm3.5194 11.0029a5.2 5.2 0 0 1 -1.4494-3h-2a6.4993 6.4993 0 0 0 .9684 3h-2.2233a16.6166 16.6166 0 0 1 -.7451-4h-2a17.3424 17.3424 0 0 0 .6652 4h-2.6652c.031-1.8364.29-5.8921 1.8027-8.5527l7.533 3.35a13.0253 13.0253 0 0 0 2.2611 5.2027z"/><path d="m0 0h32v32h-32z" fill="none"/></svg></div>');
+    let btnClearInput = $('<div class="clear-input button" title="Clear input" data-bs-toggle="tooltip" data-bs-title="Click to clear the input field"><svg height="20" viewBox="0 0 32 32" width="20" xmlns="http://www.w3.org/2000/svg"><path d="m20 18h6v2h-6z" transform="matrix(-1 0 0 -1 46 38)"/><path d="m24 26h6v2h-6z" transform="matrix(-1 0 0 -1 54 54)"/><path d="m22 22h6v2h-6z" transform="matrix(-1 0 0 -1 50 46)"/><path d="m17.0029 20a4.8952 4.8952 0 0 0 -2.4044-4.1729l7.4015-12.8271-1.7309-1-7.5758 13.126a5.6988 5.6988 0 0 0 -5.2433 1.5029c-3.7436 3.6111-3.4537 12.0532-3.44 12.4111a1 1 0 0 0 1 .96h14.9912a1 1 0 0 0 .6-1.8c-3.5397-2.6561-3.5983-8.1463-3.5983-8.2zm-5.0729-3.0029a3.11 3.11 0 0 1 3.0741 3.0029c0 .0381.0019.208.0168.4688l-5.8994-2.6236a3.8 3.8 0 0 1 2.8085-.8481zm3.5194 11.0029a5.2 5.2 0 0 1 -1.4494-3h-2a6.4993 6.4993 0 0 0 .9684 3h-2.2233a16.6166 16.6166 0 0 1 -.7451-4h-2a17.3424 17.3424 0 0 0 .6652 4h-2.6652c.031-1.8364.29-5.8921 1.8027-8.5527l7.533 3.35a13.0253 13.0253 0 0 0 2.2611 5.2027z"/><path d="m0 0h32v32h-32z" fill="none"/></svg></div>');
     div.append(btnClearInput);
     btnClearInput.on('click', function () {
       input.val('');
@@ -141,13 +160,13 @@ export const ToDoView = () => {
     let btnNewToDo = $('<div class="button button-add" data-bs-toggle="tooltip" data-bs-title="Click to add the new list item">Add a To-do</div>');
     div.append(btnNewToDo);
 
-    let btnClearLi = $('<div class="clear-ul button" data-bs-toggle="tooltip" data-bs-title="Click to delete all to-dos"><?xml version="1.0" encoding="utf-8"?><!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools --><svg width="20px" height="20px" viewBox="0 0 24 24" fill="#fff" xmlns="http://www.w3.org/2000/svg"><path d="M12 10V17M8 10V17M19 9H22M19 14H22M19 19H21M16 6V16.2C16 17.8802 16 18.7202 15.673 19.362C15.3854 19.9265 14.9265 20.3854 14.362 20.673C13.7202 21 12.8802 21 11.2 21H8.8C7.11984 21 6.27976 21 5.63803 20.673C5.07354 20.3854 4.6146 19.9265 4.32698 19.362C4 18.7202 4 17.8802 4 16.2V6M2 6H18M14 6L13.7294 5.18807C13.4671 4.40125 13.3359 4.00784 13.0927 3.71698C12.8779 3.46013 12.6021 3.26132 12.2905 3.13878C11.9376 3 11.523 3 10.6936 3H9.30643C8.47705 3 8.06236 3 7.70951 3.13878C7.39792 3.26132 7.12208 3.46013 6.90729 3.71698C6.66405 4.00784 6.53292 4.40125 6.27064 5.18807L6 6" stroke="#000000" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/></svg></div>');
+    let btnClearLi = $('<div class="clear-ul button" data-bs-toggle="tooltip" title="Delete all to-dos" data-bs-title="Click to delete all to-dos"><?xml version="1.0" encoding="utf-8"?><!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools --><svg width="20px" height="20px" viewBox="0 0 24 24" fill="#fff" xmlns="http://www.w3.org/2000/svg"><path d="M12 10V17M8 10V17M19 9H22M19 14H22M19 19H21M16 6V16.2C16 17.8802 16 18.7202 15.673 19.362C15.3854 19.9265 14.9265 20.3854 14.362 20.673C13.7202 21 12.8802 21 11.2 21H8.8C7.11984 21 6.27976 21 5.63803 20.673C5.07354 20.3854 4.6146 19.9265 4.32698 19.362C4 18.7202 4 17.8802 4 16.2V6M2 6H18M14 6L13.7294 5.18807C13.4671 4.40125 13.3359 4.00784 13.0927 3.71698C12.8779 3.46013 12.6021 3.26132 12.2905 3.13878C11.9376 3 11.523 3 10.6936 3H9.30643C8.47705 3 8.06236 3 7.70951 3.13878C7.39792 3.26132 7.12208 3.46013 6.90729 3.71698C6.66405 4.00784 6.53292 4.40125 6.27064 5.18807L6 6" stroke="#000000" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/></svg></div>');
     div.append(btnClearLi);
 
     // let saveEdits = $('<input type="button" class="save-edits" value="Save My Edits" data-bs-toggle="tooltip" data-bs-title="Click to save your edits"/>');
     // div.append(saveEdits);
 
-    let deleteListButton = $('<div class="delete-list button">X</div>');
+    let deleteListButton = $('<div title="Delete this list" class="delete-list button">X</div>');
     div.append(deleteListButton);
 
     // Load saved to-dos for this list
@@ -248,32 +267,76 @@ export const ToDoView = () => {
 
   // Helper function to create a to-do item with an X-mark for deletion & long press cross-out
   function createToDoElement(text, completed) {
-    let li = $('<li></li>').text(text.trim()); // Trim to avoid unwanted characters
+    let li = $('<li></li>').text(text.trim());
     if (completed) {
-      li.addClass("strike");
+        li.addClass("strike");
     }
 
-    // Add delete button
+    let editButton = $('<span class="edit-todo"> <svg width="16px" height="16px" viewBox="0 0 24 24" fill="none"><path d="M4 20h16v2H4zM4.293 16.293l11.293-11.293 3.414 3.414-11.293 11.293H4v-3.414zM19.707 6.293l-3.414-3.414 1.414-1.414 3.414 3.414z" fill="currentColor"/></svg></span>');
+
     let deleteButton = $('<span class="delete-todo">X</span>');
     deleteButton.on('click', function () {
-      li.remove();
-      saveLists();
-    });
-
-    // Handle long press for crossing out
-    let pressTimer;
-    li.on('mousedown touchstart', function () {
-      pressTimer = setTimeout(function () {
-        li.toggleClass("strike");
+        li.remove();
         saveLists();
-      }, 500);
-    }).on('mouseup touchend', function () {
-      clearTimeout(pressTimer);
     });
 
-    li.append(deleteButton);
+    // Restore long press to strike through
+    let pressTimer;
+    li.on('mousedown touchstart', function (event) {
+      pressTimer = setTimeout(function () {
+          li.toggleClass("strike");
+          saveLists();
+      }, 500);
+  }).on('mouseup touchend', function () {
+      clearTimeout(pressTimer);
+  }).on('mousemove', function () {
+      clearTimeout(pressTimer); // Cancels long press if the user is actually moving the item
+  });
+
+    // Edit function
+    editButton.on('click', function () {
+        let existingInput = li.find('.edit-input');
+
+        if (existingInput.length) {
+            let newText = existingInput.val().trim();
+            existingInput.remove();
+            li.contents().filter(function () { return this.nodeType === 3; }).remove();
+            li.prepend(newText);
+            saveLists();
+            return;
+        }
+
+        let currentText = li.contents().not(editButton).not(deleteButton).text().trim();
+        let input = $('<input type="text" class="edit-input" />').val(currentText);
+
+        input.on('keypress', function (event) {
+            if (event.key === 'Enter') {
+                let newText = input.val().trim();
+                input.remove();
+                li.contents().filter(function () { return this.nodeType === 3; }).remove();
+                li.prepend(newText);
+                saveLists();
+            }
+        });
+
+        li.prepend(input);
+        input.focus();
+    });
+
+    li.append(editButton).append(deleteButton);
+
     return li;
-  }
+}
+
+// **Enable Sorting for To-Dos**
+$(function () {
+    $(".sortable").sortable({
+        update: function () {
+            saveLists(); // Save new order after rearranging
+        }
+    });
+});
+
 
   function add() {
     let savedLists = JSON.parse(localStorage.getItem('savedLists')) || []; // Load existing lists
