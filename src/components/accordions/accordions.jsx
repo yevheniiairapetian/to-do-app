@@ -13,8 +13,8 @@ export const Accordions = () => {
                 <Accordion.Body>
                     <h6>User set-up</h6>
                     <ul className='accordion-ul'>
-                        <li>To change the username after initial set up, click on the username in the top right of the navigation, enter a new username, then click anywhere in the app.</li>
-                    <li>Click the <svg width="16px" height="16px" viewBox="0 0 24 24" fill="none"><path d="M4 20h16v2H4zM4.293 16.293l11.293-11.293 3.414 3.414-11.293 11.293H4v-3.414zM19.707 6.293l-3.414-3.414 1.414-1.414 3.414 3.414z" fill="currentColor"/></svg> icon near the profile image to delete your profile image.</li>
+                        <li>To change the <strong>username</strong> after initial set up, click on the username in the top right of the navigation, enter a new username, then click anywhere in the app.</li>
+                    <li>Click the <svg width="16px" height="16px" viewBox="0 0 24 24" fill="none"><path d="M4 20h16v2H4zM4.293 16.293l11.293-11.293 3.414 3.414-11.293 11.293H4v-3.414zM19.707 6.293l-3.414-3.414 1.414-1.414 3.414 3.414z" fill="currentColor"/></svg> icon near the profile image to delete your <strong>profile image</strong>.</li>
                     
                     </ul>
                     <h6>Working with lists</h6>
@@ -53,8 +53,8 @@ export const Accordions = () => {
                 <Accordion.Body>
                 <h6>User set-up</h6>
                     <ul className='accordion-ul'>
-                        <li>To change the username after initial set up, tap on the username in the top right of the navigation, enter a new username, then tap anywhere in the app.</li>
-                    <li>Tap on the <svg width="16px" height="16px" viewBox="0 0 24 24" fill="none"><path d="M4 20h16v2H4zM4.293 16.293l11.293-11.293 3.414 3.414-11.293 11.293H4v-3.414zM19.707 6.293l-3.414-3.414 1.414-1.414 3.414 3.414z" fill="currentColor"/></svg> icon near the profile image to delete your profile image.</li>
+                        <li>To change the <strong>username</strong> after initial set up, tap on the username in the top right of the navigation, enter a new username, then tap anywhere in the app.</li>
+                    <li>Tap on the <svg width="16px" height="16px" viewBox="0 0 24 24" fill="none"><path d="M4 20h16v2H4zM4.293 16.293l11.293-11.293 3.414 3.414-11.293 11.293H4v-3.414zM19.707 6.293l-3.414-3.414 1.414-1.414 3.414 3.414z" fill="currentColor"/></svg> icon near the profile image to delete your <strong>profile image</strong>.</li>
                     
                     </ul>
                     <h6>Working with lists</h6>
