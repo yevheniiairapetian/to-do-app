@@ -203,6 +203,15 @@ border-bottom-left-radius: 0px 0px;
 	font-size:0.9em;
 }
 
+.accordion-ul li{
+    width: initial;
+
+}
+
+.primary-to-do-color{
+	color: lightsalmon;
+}
+
 li{
 	text-align: left;
 	list-style-position:inside;
