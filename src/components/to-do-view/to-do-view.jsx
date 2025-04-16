@@ -124,7 +124,7 @@ $(document).ready(function () {
     let div = $("<div class='new-list col-lg-4 col-sm-12 col-md-6 mt-5 text-center'></div>");
     row.append(div);
 
-    let listTitle = $("<h4 class='list-title' contenteditable='true'></h4>").text(title);
+    let listTitle = $("<h4 class='list-title' contenteditable='true' title='Edit list name'></h4>").text(title);
     div.append(listTitle);
 
 
