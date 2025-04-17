@@ -58,6 +58,7 @@ This repository contains a simple responsive to-do app developed with React, jQu
 - Service Worker
 
 ## When installed like a Progressive Web App, it allows to:
+
 - Resemble a native-app experience.
 - Have an improved user experience
 - Experience cross-platform compatibility
