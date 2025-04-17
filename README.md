@@ -70,6 +70,7 @@ This repository contains a simple responsive to-do app developed with React, jQu
 Read more about the Progressive Web Apps [here](https://www.itaims.com/blog/benefits-of-progressive-web-apps-pwa-advantages-and-disadvantages)
 
 ## Project dependencies:
+
 - jQuery for DOM manipulation and interactivity
 - jQuery UI for sortability
 - React as the Javascript library
@@ -77,25 +78,31 @@ Read more about the Progressive Web Apps [here](https://www.itaims.com/blog/bene
 - Vercel for deployment
 
 ## Live Version:
+
 The app is live [here](https://to-do-min.vercel.app/)
 
 ## Clone and Preview
-To clone the app use the following command:
-```console git clone git@github.com:yevheniiairapetian/to-do-app```
-Or download directly by clicking on <> Code button > Download ZIP. Make sure you have Node installed on your machine. To check if you have Node installed, run the ```node -v``` command in the terminal. If Node is not installed, use the preferred package manager:
+
+To clone and launch the app, follow these steps:
+ 
+1. Use the command ```console git clone git@github.com:yevheniiairapetian/to-do-app```
+1.1 Alternatively, download directly by clicking on <> Code button > Download ZIP.
+2. Make sure you have Node installed on your machine. 
+2.1 To check if you have Node installed, run the ```node -v``` command in the terminal. If Node is not installed, use the preferred package manager:
 - For npm on Windows, run the ```npm install nodejs``` command 
 - For Mac, run the ```brew install node``` command
 - For Linux Debian/Ubuntu-based systems run the ```sudo apt-get install nodejs``` command
 - For Red Hat/Fedora-based systems run the ```sudo yum install nodejs```
 command
-2. Then get back to the project folder and use the ```cd to-do-app``` terminal command. Then run the ```npm i``` command (or similar, depending on the package manager) to install the project dependencies
-  3. After that, follow the scripts in the section below.
+3. Get back to the project folder and use the ```cd to-do-app``` terminal command. 
+4. Run the ```npm i``` command (or similar, depending on the package manager) to install the project dependencies
+5. Then follow the scripts in the section below (```npm start``` if you want launch)
 
 ## Available Scripts
 
 In the project directory, you can run:
 
-### `npm start`
+#### `npm start`
 
 Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
@@ -103,12 +110,12 @@ Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 The page will reload when you make changes.\
 You may also see any lint errors in the console.
 
-### `npm test`
+#### `npm test`
 
 Launches the test runner in the interactive watch mode.\
 See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `npm run build`
+#### `npm run build`
 
 Builds the app for production to the `build` folder.\
 It correctly bundles React in production mode and optimizes the build for the best performance.
@@ -118,7 +125,7 @@ Your app is ready to be deployed!
 
 See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### `npm run eject`
+#### `npm run eject`
 
 **Note: this is a one-way operation. Once you `eject`, you can't go back!**
 
