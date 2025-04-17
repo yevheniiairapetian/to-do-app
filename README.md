@@ -137,4 +137,5 @@ You don't have to ever use `eject`. The curated feature set is suitable for smal
 Feel free to contact me via[ LinkedIn](https://www.linkedin.com/in/yevheniiairapetian/) or  
 [email](mailto:contact@yevheniiairapetian.com) or 
 via the contact information on my [portfolio](https://yevheniiairapetian.com/#/contact)
+
 Also, if you have any suggestions, comments, ideas, either regarding this project or in general, or you noticed some errors in the code, feel free to use the same contact data above to discuss.
