@@ -94,7 +94,7 @@ To clone and launch the app, follow these steps:
 command
 3. Get back to the project folder and use the ```cd to-do-app``` terminal command. 
 4. Run the ```npm i``` command (or similar, depending on the package manager) to install the project dependencies
-5. Then follow the scripts in the section below (```npm start``` if you want launch)
+5. Then follow the scripts in the section below (```npm start``` if you want to launch the app in the default browser)
 
 ## Available Scripts
 
