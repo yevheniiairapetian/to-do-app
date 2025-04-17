@@ -57,9 +57,9 @@ This repository contains a simple responsive to-do app developed with React, jQu
 - PWA
 - Service Worker
 
-## When installed like a PWA App, it's possible to:
+## When installed like a PWA App, users can:
 
-- Resemble a native-app experience.
+- Enjoy a native-app experience.
 - Have an improved user experience
 - Experience cross-platform compatibility
 - Make use of faster loading times
