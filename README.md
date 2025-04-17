@@ -4,25 +4,56 @@
 This repository contains a simple responsive to-do app developed with React, jQuery, and Bootstrap
 
 ## Key Features:
-- A simple "How-To" guide for desktop and mobile users
+
+#### User guide
+
+- There's a simple "How-To" guide for desktop and mobile users
+
+#### User set-up
+
+- Ability to create a user profile with a username (required) and a profile image (optional) (all saved to local storage)
+- The initial set-up checks the username and profile image on validity (value and length for the username and image type and size for the profile image) 
+- The username can be edited upon a click
+- The app checks if the username is empty (restores the last change if empty)
+- The profile image can be deleted after initial set-up
+
+#### Working with lists
+
 - Create \ edit\ delete to-do lists
 - Add \ edit \ delete to-dos (one by one or all at once)
 - Mark to-dos as done (strike through)
+- The app checks list titles on empty data (restores the last change if empty)
 - Upon deleting the list \ all to-dos the user can confirm \ cancel their choice
 - All lists are edited independently.
-- The app has a live search that filters the lists \ to-dos
-- Some button clicks produce simple sound notifications
-- Some UI elements use simple icons and animations for better UX
-- The app is responsive
-- All changes are auto-saved to local storage (no need to use any UI elements to save the changes and the user is notified about updates)
-- The app can be installed on desktop \ mobile device (PWA App)
+- Users can rearrange the to-dos in the list
+
+#### Filtering
+
+- The app has a live search that filters the lists \ to-dos by the list name / to-do text
   
+#### UI / UX
+
+- Some button clicks produce simple sound notifications for more interactivity and engagement
+- Some UI elements use simple icons and animations for better UX
+- The app is responsive thanks to media queries
+- The lists display updates to the user upon typing / editing / deleting text in the lists, hence, the user instantly gets feedback when using the list features 
+
+#### Auto-save and PWA functionality
+
+- All user changes are automatically saved to local storage after any to-do / list edits (no need to click any buttons to save)
+- The app can be installed on desktop / mobile devices resembling a native-like experince, ease of use, and offline notification
+
+#### Resetting data
+
+- All user data can be deleted (performs local storage clearing upon clicking a button)
+
 ## Technologies Used:
-- HTNL5
+- HTML5
 - CSS3
+- React.js
 - jQuery
-- Bootstrap
-- React
+- jQuery UI
+- React Bootstrap
 - PWA
 - Service Worker
 
@@ -39,8 +70,9 @@ Read more about the Progressive Web Apps [here](https://www.itaims.com/blog/bene
 
 ## Project dependencies:
 - jQuery for DOM manipulation and interactivity
-- React as Javascript library
-- Bootstrap for design/responsive design, accordions
+- jQuery UI for sortability
+- React as the Javascript library
+- React Bootstrap for design/responsive design, components, PWA features
 - Vercel for deployment
 
 ## Live Version:
@@ -99,26 +131,3 @@ You don't have to ever use `eject`. The curated feature set is suitable for smal
 Feel free to contact me via[ LinkedIn](https://www.linkedin.com/in/yevheniiairapetian/) or  
 [email](mailto:contact@yevheniiairapetian.com) or 
 via the contact information on my [portfolio](https://yevheniiairapetian.com/#/contact) 
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
