@@ -85,10 +85,8 @@ The app is live [here](https://to-do-min.vercel.app/)
 
 To clone and launch the app, follow these steps:
  
-1. Use the command ```console git clone git@github.com:yevheniiairapetian/to-do-app```
-1.1 Alternatively, download directly by clicking on <> Code button > Download ZIP.
-2. Make sure you have Node installed on your machine. 
-2.1 To check if you have Node installed, run the ```node -v``` command in the terminal. If Node is not installed, use the preferred package manager:
+1. Use the command ```console git clone git@github.com:yevheniiairapetian/to-do-app```. Alternatively, download directly by clicking on <> Code button > Download ZIP.
+2. Make sure you have Node installed on your machine. To check if you have Node installed, run the ```node -v``` command in the terminal. If Node is not installed, use the preferred package manager:
 - For npm on Windows, run the ```npm install nodejs``` command 
 - For Mac, run the ```brew install node``` command
 - For Linux Debian/Ubuntu-based systems run the ```sudo apt-get install nodejs``` command
