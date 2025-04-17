@@ -81,7 +81,7 @@ Read more about the Progressive Web Apps [here](https://www.itaims.com/blog/bene
 
 The app is live [here](https://to-do-min.vercel.app/)
 
-## Clone and Preview
+## Clone and Preview:
 
 To clone and launch the app, follow these steps:
  
@@ -94,18 +94,19 @@ To clone and launch the app, follow these steps:
 command
 3. Get back to the project folder and use the ```cd to-do-app``` terminal command. 
 4. Run the ```npm i``` command (or similar, depending on the package manager) to install the project dependencies
-5. Then follow the scripts in the section below (```npm start``` if you want to launch the app in the default browser)
+5. Then follow the scripts in the section below (for quick start, use ```npm start``` if you want to launch the app in the default browser)
 
-## Available Scripts
+## Available Scripts:
 
 In the project directory, you can run:
 
 #### `npm start`
 
 Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Opens the app in the default browser at this address: [http://localhost:3000](http://localhost:3000) (if the 3000 port is not taken by another process). Or, you can manually open it.
 
 The page will reload when you make changes.\
+That means, you see the updates to your code live, no need to refresh.
 You may also see any lint errors in the console.
 
 #### `npm test`
