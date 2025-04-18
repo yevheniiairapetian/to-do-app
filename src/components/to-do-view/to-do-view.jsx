@@ -1,7 +1,7 @@
 import React from "react";
 import $ from "jquery";
 import "jquery-ui-dist/jquery-ui";
-
+import "./js/jquery.ui.touch-punch.min";
 import { Navbar, Button, Container, Row, Col, Nav, Image } from "react-bootstrap";
 import { Accordions } from "../accordions/accordions";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
