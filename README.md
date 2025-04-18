@@ -19,13 +19,14 @@ This repository contains a simple responsive to-do app developed with React, jQu
 
 #### Working with lists
 
-- Create \ edit\ delete to-do lists
-- Add \ edit \ delete to-dos (one by one or all at once)
+- Create \ edit\ delete \ to-do lists
+- Add \ edit \ copy to-dos (one by one) and delete to-dos (one by one or all at once)
+- Rearrange to-dos \ lists
+- Drop to-dos from one list to another
 - Mark to-dos as done (strike through)
 - The app checks list titles on empty data (restores the last change if empty)
 - Upon deleting the list \ all to-dos the user can confirm \ cancel their choice
 - All lists are edited independently.
-- Users can rearrange the to-dos in the list
 
 #### Filtering
 
@@ -36,7 +37,8 @@ This repository contains a simple responsive to-do app developed with React, jQu
 - Some button clicks produce simple sound notifications for more interactivity and engagement
 - Some UI elements use simple icons and animations for better UX
 - The app is responsive thanks to media queries
-- The lists display updates to the user upon typing / editing / deleting text in the lists, hence, the user instantly gets feedback when using the list features 
+- The lists display updates to the user upon typing / editing / deleting text in the lists, hence, the user instantly gets feedback when using the list features
+- Toggle list view between expand (makes lists wider and taking each a separate row) \ collapse modes (makes lists narrower and taking each 1/3 of the row width)
 
 #### Auto-save and PWA functionality
 
