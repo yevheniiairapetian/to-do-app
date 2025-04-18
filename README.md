@@ -39,6 +39,7 @@ This repository contains a simple responsive to-do app developed with React, jQu
 - The app is responsive thanks to media queries
 - The lists display updates to the user upon typing \ editing \ deleting text in the lists, hence, the user instantly gets feedback when using the list features
 - Toggle list view between expand (makes lists wider and taking each a separate row) \ collapse modes (makes lists narrower and taking each 1/3 of the row width)
+- Every important change affecting the content of a list(s) \ user data requires the user to confirm it first (via a modal dialog) to avoid possible data loss
 
 #### Auto-save and PWA functionality
 
