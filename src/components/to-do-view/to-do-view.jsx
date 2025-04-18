@@ -29,6 +29,23 @@ export const ToDoView = () => {
 
   });
 
+
+  $(document).ready(function () {
+    $("#toggleViewBtn").on("click", function () {
+        let listContainer = $(".list-row");
+
+        if (listContainer.hasClass("expanded-list-row")) {
+            listContainer.removeClass("expanded-list-row");
+            $(this).html('<p title="Expand list"><svg width="24" height="30" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="m0 0h24v24h-24z" fill="#fff" opacity="0" transform="matrix(-1 0 0 -1 24 24)"/><g fill="#231f20"><path d="m20 5a1 1 0 0 0 -1-1h-5a1 1 0 0 0 0 2h2.57l-3.28 3.29a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l3.29-3.29v2.58a1 1 0 0 0 1 1 1 1 0 0 0 1-1z"/><path d="m10.71 13.29a1 1 0 0 0 -1.42 0l-3.29 3.28v-2.57a1 1 0 0 0 -1-1 1 1 0 0 0 -1 1v5a1 1 0 0 0 1 1h5a1 1 0 0 0 0-2h-2.58l3.29-3.29a1 1 0 0 0 0-1.42z"/></g></svg></p>'); // Collapsed list icon
+        } else {
+            listContainer.addClass("expanded-list-row");
+            $(this).html('<p title="Collapse list"><svg width="24" height="30" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="m0 0h24v24h-24z" fill="#fff" opacity="0" transform="matrix(-1 0 0 -1 24 24)"/><g fill="#231f20"><path d="m19 9h-2.58l3.29-3.29a1 1 0 1 0 -1.42-1.42l-3.29 3.28v-2.57a1 1 0 0 0 -1-1 1 1 0 0 0 -1 1v5a1 1 0 0 0 1 1h5a1 1 0 0 0 0-2z"/><path d="m10 13h-5a1 1 0 0 0 0 2h2.57l-3.28 3.29a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l3.29-3.29v2.58a1 1 0 0 0 1 1 1 1 0 0 0 1-1v-5a1 1 0 0 0 -1-1z"/></g></svg></p>'); // Expanded grid icon
+        }
+    });
+});
+
+
+
   $(document).ready(function () {
     $(".sortable").sortable({
       start: function () {
@@ -37,7 +54,17 @@ export const ToDoView = () => {
       stop: function () {
         saveLists(); // Save new order after dragging stops
       }
+      
     });
+    $(".list-row").sortable({
+      items: ".new-list",
+      handle: ".drag-handle", // Only the drag handle can move lists
+      placeholder: "sortable-placeholder-list",
+      update: function(event, ui) {
+          saveLists();
+      }
+  });
+  
   });
 
 
@@ -48,6 +75,22 @@ export const ToDoView = () => {
         saveLists();
       }
     });
+    $(function () {
+      
+    
+    
+    
+    
+      $(".list-row").sortable({
+        items: ".new-list",
+        handle: ".drag-handle", // Only the drag handle can move lists
+        placeholder: "sortable-placeholder-list",
+        update: function(event, ui) {
+            saveLists();
+        }
+    });
+}
+);
   })
 
   $(document).ready(function () {
@@ -93,20 +136,20 @@ export const ToDoView = () => {
 
   function saveLists() {
     let lists = [];
+$(".new-list").each(function () { // Preserve sorting order
+    let title = $(this).find(".list-title").text().trim();
+    let todos = [];
 
-    $('.new-list').each(function () {
-      let title = $(this).find('.list-title').text().trim();
-      let todos = [];
-
-      $(this).find('ol li').each(function () {
+    $(this).find("ol li").each(function () {
         let cleanText = $(this).clone().children().remove().end().text().trim();
         todos.push({ text: cleanText, completed: $(this).hasClass("strike") });
-      });
-
-      lists.push({ title, todos });
     });
 
-    localStorage.setItem('savedLists', JSON.stringify(lists));
+    lists.push({ title, todos });
+});
+
+localStorage.setItem("savedLists", JSON.stringify(lists)); // Save new order
+
   }
 
   function loadLists() {
@@ -124,8 +167,13 @@ export const ToDoView = () => {
     let div = $("<div class='new-list col-lg-4 col-sm-12 col-md-6 mt-5 text-center'></div>");
     row.append(div);
 
+    let dragHandle = $("<span class='drag-handle' title='Drag list'>☰</span>");
     let listTitle = $("<h4 class='list-title' contenteditable='true' title='Edit list name'></h4>").text(title);
-    div.append(listTitle);
+    
+    div.append(dragHandle).append(listTitle);
+    
+    
+
 
     let updateEdits = $('<p class="update">All your edits are automatically saved</p>').show();
     div.append(updateEdits);
@@ -172,8 +220,19 @@ export const ToDoView = () => {
       }, 600);
     });
 
-    let ol = $('<ol class="sortable"></ol>');
-    div.append(ol);
+    let ol = $('<ol class="sortable sortable-placeholder"></ol>');
+div.append(ol);
+
+// Ensure this new list is sortable
+ol.sortable({
+  connectWith: ".sortable",
+  placeholder: "sortable-placeholder",
+  receive: function(event, ui) {
+      saveLists(); // Save after an item moves into the new list
+  }
+}).
+disableSelection();
+
 
     let btnNewToDo = $('<div class="button button-add" data-bs-toggle="tooltip" data-bs-title="Click to add the new list item">Add a To-do</div>');
     div.append(btnNewToDo);
@@ -222,38 +281,43 @@ export const ToDoView = () => {
       }
     });
 
-    listTitle.on("focus", function () {
-      $(this).data("previousValue", $(this).text().trim()); // Save previous title
-    });
+    listTitle.on("mousedown", function (event) {
+      event.stopPropagation(); // Prevent the click from triggering a drag event
+  });
+  
 
     listTitle.on("input", function () {
       let updateEdits = div.find(".update");
       updateEdits.text("Editing..").show();
-
+  
       clearTimeout(window.editTimeout);
       window.editTimeout = setTimeout(() => {
-        updateEdits.text("Edits saved!").show();
+          updateEdits.text("Edits saved!").show();
       }, 3000);
-    });
-
-    listTitle.on("blur", function () { 
-      let previousValue = $(this).data("previousValue");
-      let newValue = $(this).text().trim();
-      let updateEdits = div.find(".update"); // Ensure correct update text element
-  
-      if (newValue === "") { 
-          $(this).text(previousValue); // Restore previous title if empty
-          updateEdits.text("The list title can't be empty").show(); // Show warning text
-  
-          setTimeout(() => {
-              updateEdits.text("All your edits are automatically saved").show(); // Reset after 2.5 seconds
-          }, 2800);
-      } else {
-          updateEdits.text("All your edits are automatically saved").show();
-      }
-  
-      saveLists();
   });
+  
+
+  listTitle.on("mousedown", function (event) {
+    event.stopPropagation(); // Prevent the click from triggering a drag event
+});
+
+
+listTitle.on("focus", function () {
+  $(this).data("previousValue", $(this).text().trim()); // Save previous title
+});
+
+listTitle.on("blur", function () { 
+  let previousValue = $(this).data("previousValue");
+  let newValue = $(this).text().trim();
+
+  if (newValue === "") { 
+      $(this).text(previousValue); // Restore previous title if empty
+  }
+
+  saveLists();
+});
+
+
 
 
     // Reset back to "All your edits are automatically saved" when the user clicks to edit again
@@ -343,32 +407,58 @@ export const ToDoView = () => {
   function createToDoElement(text, completed) {
     
     let li = $('<li></li>').text(text.trim());
-    if (completed) {
-      li.addClass("strike");
-    }
 
-    let editButton = $('<span class="edit-todo"> <svg width="16px" height="16px" viewBox="0 0 24 24" fill="none"><path d="M4 20h16v2H4zM4.293 16.293l11.293-11.293 3.414 3.414-11.293 11.293H4v-3.414zM19.707 6.293l-3.414-3.414 1.414-1.414 3.414 3.414z" fill="currentColor"/></svg></span>');
+    let editButton = $('<span title="Edit to-do" class="edit-todo"> <svg width="16px" height="16px" viewBox="0 0 24 24" fill="none"><path d="M4 20h16v2H4zM4.293 16.293l11.293-11.293 3.414 3.414-11.293 11.293H4v-3.414zM19.707 6.293l-3.414-3.414 1.414-1.414 3.414 3.414z" fill="currentColor"/></svg></span>');
 
-    let deleteButton = $('<span class="delete-todo">X</span>');
+    let deleteButton = $('<span class="delete-todo" title="Delete this to-do">X</span>');
     deleteButton.on('click', function () {
       li.remove();
       saveLists();
     });
 
+let copyButton = $('<span title="Make a copy" class="copy-todo"> <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2" /><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" /></svg></span>');
+
+copyButton.on('click', function () {
+  let duplicatedLi = createToDoElement(text, li.hasClass("strike")); // Duplicate the to-do with the same status
+  li.after(duplicatedLi); // Paste below the original to-do
+  saveLists();
+
+  // Update status message
+  let updateEdits = li.closest(".new-list").find(".update");
+  updateEdits.text("To-do cloned!").show();
+
+  // Revert back to "All your edits are automatically saved" after 2.8 sec
+  setTimeout(() => {
+      updateEdits.text("All your edits are automatically saved").show();
+  }, 2800);
+});
+
+
+li.append(copyButton);
+
+    if (completed) {
+      li.addClass("strike");
+    }
+
+    
+
     let updateEdits = $(".update"); // Select the update status element
 
     // Restore long press to strike through
     let pressTimer;
-    li.on('mousedown touchstart', function () {
+    li.on('mousedown touchstart', function (event) {
       pressTimer = setTimeout(function () {
-        li.toggleClass("strike");
-        saveLists();
+          if (!$(event.target).hasClass("ui-sortable-helper")) { // Prevent strike if dragging
+              li.toggleClass("strike");
+              saveLists();
+          }
       }, 500);
-    }).on('mouseup touchend', function () {
+  }).on('mouseup touchend', function () {
       clearTimeout(pressTimer);
-    }).on('mousemove', function () {
-      clearTimeout(pressTimer); // Cancels long press if the user is actually moving the item
-    });
+  }).on('mousemove touchmove', function () {
+      clearTimeout(pressTimer); // Cancels long press if moving the item
+  });
+  
 
     li.on("focus", function () {
       $(this).data("previousValue", $(this).text().trim()); // Save previous to-do
@@ -477,21 +567,36 @@ export const ToDoView = () => {
   // **Enable Sorting for To-Dos**
   $(function () {
     $(".sortable").sortable({
-      update: function () {
-        saveLists(); // Save new order after rearranging
-      }
-    });
-  });
+        connectWith: ".sortable", // Allows dragging between lists
+        placeholder: "sortable-placeholder", // Makes empty lists recognizable as drop areas
+        receive: function(event, ui) {
+            saveLists(); // Save after an item is dropped into a new list
+        }
+    }).disableSelection();
+    
+  
+  
+});
+
 
 
   function add() {
-    let savedLists = JSON.parse(localStorage.getItem('savedLists')) || []; // Load existing lists
+    
+    let savedLists = JSON.parse(localStorage.getItem('savedLists')) || []; 
+    let newList = { title: "Untitled List", todos: [] };
 
-    let newList = { title: "Untitled List", todos: [] }; // Define the new list
-    savedLists.push(newList); // Add it to saved lists
+    savedLists.push(newList); 
+    localStorage.setItem('savedLists', JSON.stringify(savedLists));
 
-    localStorage.setItem('savedLists', JSON.stringify(savedLists)); // Save all lists right away
-    createListElement(newList.title, newList.todos); // Display the new list
+    createListElement(newList.title, newList.todos); 
+
+    $(".sortable").sortable({  // Reinitialize sortable after adding a list
+        connectWith: ".sortable",
+        placeholder: "sortable-placeholder",
+        receive: function(event, ui) {
+            saveLists();  // Save after an item moves into a new list
+        }
+    }).disableSelection();
   }
 
   return (
@@ -504,6 +609,10 @@ export const ToDoView = () => {
         data-bs-toggle="tooltip" data-bs-title="Click to add the new list">
         Add a New List
       </div>
+
+      <div class="toggle-view button" id="toggleViewBtn">
+    Expand Lists
+</div>
       <div class="row list-row">
 
       </div>
