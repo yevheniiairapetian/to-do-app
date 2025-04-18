@@ -30,20 +30,20 @@ This repository contains a simple responsive to-do app developed with React, jQu
 
 #### Filtering
 
-- The app has a live search that filters the lists \ to-dos by the list name / to-do text
+- The app has a live search that filters the lists \ to-dos by the list name \ to-do text
   
 #### UI / UX
 
 - Some button clicks produce simple sound notifications for more interactivity and engagement
 - Some UI elements use simple icons and animations for better UX
 - The app is responsive thanks to media queries
-- The lists display updates to the user upon typing / editing / deleting text in the lists, hence, the user instantly gets feedback when using the list features
+- The lists display updates to the user upon typing \ editing \ deleting text in the lists, hence, the user instantly gets feedback when using the list features
 - Toggle list view between expand (makes lists wider and taking each a separate row) \ collapse modes (makes lists narrower and taking each 1/3 of the row width)
 
 #### Auto-save and PWA functionality
 
-- All user changes are automatically saved to local storage after any to-do / list edits (no need to click any buttons to save)
-- The app can be installed on desktop / mobile devices resembling a native-like experince, ease of use, and offline notification
+- All user changes are automatically saved to local storage after any to-do \ list edits (no need to click any buttons to save)
+- The app can be installed on desktop \ mobile devices resembling a native-like experince, ease of use, and offline notification
 
 #### Resetting data
 
