@@ -13,6 +13,10 @@ html, body{
 	/* height: 100%; */
 }
 
+.drag-handle{
+	cursor:grab;
+}
+
 .app-container {
 	display: flex;
 	flex-direction: column;
