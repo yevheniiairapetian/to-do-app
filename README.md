@@ -1,5 +1,8 @@
 # To-do-list app
 
+## Project Screenshot
+<a href="https://ibb.co/QFsd8nCf"><img src="https://i.ibb.co/QFsd8nCf/2025-04-18-16h36-09.png" alt="2025-04-18-16h36-09" border="0"></a>
+
 ## Description:
 This repository contains a simple responsive to-do app developed with React, jQuery, and Bootstrap
 
