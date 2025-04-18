@@ -220,6 +220,8 @@ border-bottom-left-radius: 0px 0px;
 }
 
 
+
+
 .sortable-placeholder-list {
     background: rgba(0, 0, 0, 0.1);
     height: 100px;
@@ -294,7 +296,23 @@ border-bottom-left-radius: 0px 0px;
 	right:20%;
 	background-color: transparent;
 	color: black;
+	
 }
+
+.expanded-list-row ol.sortable{
+	padding-left: 0;
+	padding-right: 0;
+	padding-top: 10px;
+	padding-bottom: 10px;
+}
+
+ol.sortable{
+	padding-left: 0;
+	padding-right: 0;
+	padding-top: 10px;
+	padding-bottom: 10px;
+}
+
 
 li{
 	text-align: left;
@@ -519,6 +537,17 @@ div > crossOutButton {
 	margin-top: -40px;
    }
 
+}
+
+@media screen and (max-width:412px){
+	.expanded-list-row ol.sortable{
+		margin-left: 0;
+		margin-right: 0;
+		width: 100%;
+	}
+	.expanded-list-row .list-title, .expanded-list-row ol, .expanded-list-row form, .expanded-list-row form input, .expanded-list-row li {
+		width: 76%;
+	}
 }
 
 

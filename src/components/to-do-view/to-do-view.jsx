@@ -611,7 +611,7 @@ li.append(copyButton);
       </div>
 
       <div class="toggle-view button" id="toggleViewBtn">
-    Expand Lists
+    Toggle View
 </div>
       <div class="row list-row">
 
