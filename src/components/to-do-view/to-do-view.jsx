@@ -69,7 +69,10 @@ $(document).ready(function () {
     },
     stop: function () {
       saveLists(); // Save new order after dragging stops
-    }
+    },
+    cancel: "input, button",
+    delay: 100, // Helps with accidental scrolling issues
+    scroll: false // Prevents browser auto-scrolling during touch drag
 
   });
   $(".list-row").sortable({
