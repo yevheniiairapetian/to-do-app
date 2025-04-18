@@ -36,10 +36,10 @@ export const ToDoView = () => {
 
         if (listContainer.hasClass("expanded-list-row")) {
             listContainer.removeClass("expanded-list-row");
-            $(this).html('<p title="Expand list"><svg width="24" height="30" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="m0 0h24v24h-24z" fill="#fff" opacity="0" transform="matrix(-1 0 0 -1 24 24)"/><g fill="#231f20"><path d="m20 5a1 1 0 0 0 -1-1h-5a1 1 0 0 0 0 2h2.57l-3.28 3.29a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l3.29-3.29v2.58a1 1 0 0 0 1 1 1 1 0 0 0 1-1z"/><path d="m10.71 13.29a1 1 0 0 0 -1.42 0l-3.29 3.28v-2.57a1 1 0 0 0 -1-1 1 1 0 0 0 -1 1v5a1 1 0 0 0 1 1h5a1 1 0 0 0 0-2h-2.58l3.29-3.29a1 1 0 0 0 0-1.42z"/></g></svg></p>'); // Collapsed list icon
+            $(this).html('<p title="Expand lists"><svg width="24" height="30" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="m0 0h24v24h-24z" fill="#fff" opacity="0" transform="matrix(-1 0 0 -1 24 24)"/><g fill="#231f20"><path d="m20 5a1 1 0 0 0 -1-1h-5a1 1 0 0 0 0 2h2.57l-3.28 3.29a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l3.29-3.29v2.58a1 1 0 0 0 1 1 1 1 0 0 0 1-1z"/><path d="m10.71 13.29a1 1 0 0 0 -1.42 0l-3.29 3.28v-2.57a1 1 0 0 0 -1-1 1 1 0 0 0 -1 1v5a1 1 0 0 0 1 1h5a1 1 0 0 0 0-2h-2.58l3.29-3.29a1 1 0 0 0 0-1.42z"/></g></svg></p>'); // Collapsed list icon
         } else {
             listContainer.addClass("expanded-list-row");
-            $(this).html('<p title="Collapse list"><svg width="24" height="30" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="m0 0h24v24h-24z" fill="#fff" opacity="0" transform="matrix(-1 0 0 -1 24 24)"/><g fill="#231f20"><path d="m19 9h-2.58l3.29-3.29a1 1 0 1 0 -1.42-1.42l-3.29 3.28v-2.57a1 1 0 0 0 -1-1 1 1 0 0 0 -1 1v5a1 1 0 0 0 1 1h5a1 1 0 0 0 0-2z"/><path d="m10 13h-5a1 1 0 0 0 0 2h2.57l-3.28 3.29a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l3.29-3.29v2.58a1 1 0 0 0 1 1 1 1 0 0 0 1-1v-5a1 1 0 0 0 -1-1z"/></g></svg></p>'); // Expanded grid icon
+            $(this).html('<p title="Collapse lists"><svg width="24" height="30" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="m0 0h24v24h-24z" fill="#fff" opacity="0" transform="matrix(-1 0 0 -1 24 24)"/><g fill="#231f20"><path d="m19 9h-2.58l3.29-3.29a1 1 0 1 0 -1.42-1.42l-3.29 3.28v-2.57a1 1 0 0 0 -1-1 1 1 0 0 0 -1 1v5a1 1 0 0 0 1 1h5a1 1 0 0 0 0-2z"/><path d="m10 13h-5a1 1 0 0 0 0 2h2.57l-3.28 3.29a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l3.29-3.29v2.58a1 1 0 0 0 1 1 1 1 0 0 0 1-1v-5a1 1 0 0 0 -1-1z"/></g></svg></p>'); // Expanded grid icon
         }
     });
 });
