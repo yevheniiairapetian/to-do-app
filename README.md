@@ -35,6 +35,12 @@ This repository contains a simple responsive to-do app developed with React, jQu
 #### Filtering
 
 - The app has a live search that filters the lists \ to-dos by the list name \ to-do text
+
+#### Changing list layouts
+
+- Users can collapse \ expand lists (on desktop devices > 768px screen width). Expanding makes lists wider and taking each a separate row) \ collapsing makes lists narrower and taking each 1/3 of the row width.
+- On smaller screens the lists are by default expanded.
+
   
 #### UI / UX
 
@@ -42,7 +48,6 @@ This repository contains a simple responsive to-do app developed with React, jQu
 - Some UI elements use simple icons and animations for better UX
 - The app is responsive thanks to media queries
 - The lists display updates to the user upon typing \ editing \ deleting text in the lists, hence, the user instantly gets feedback when using the list features
-- Toggle list view between expand (makes lists wider and taking each a separate row) \ collapse modes (makes lists narrower and taking each 1/3 of the row width)
 - Every important change affecting the content of a list(s) \ user data requires the user to confirm it first (via a modal dialog) to avoid possible data loss
 
 #### Auto-save and PWA functionality
@@ -59,7 +64,7 @@ This repository contains a simple responsive to-do app developed with React, jQu
 - CSS3
 - React.js
 - jQuery
-- jQuery UI
+- Sortable.js
 - React Bootstrap
 - PWA
 - Service Worker
@@ -79,9 +84,9 @@ Read more about the Progressive Web Apps [here](https://www.itaims.com/blog/bene
 ## Project dependencies:
 
 - jQuery for DOM manipulation and interactivity
-- jQuery UI for sortability
-- React as the Javascript library
-- React Bootstrap for design/responsive design, components, PWA features
+- Sortable.js for sortability \ draggabilty
+- React.js as the Javascript library, PWA features
+- React Bootstrap for design \ responsive design, components
 - Vercel for deployment
 
 ## Live Version:
