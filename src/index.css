@@ -16,6 +16,9 @@ html, body{
 .sortable {
     touch-action: none;
 }
+.sortable-placeholder {
+    background-color: rgba(0, 0, 0, 0.1);
+}
 .sortable li {
     pointer-events: auto !important;
 }

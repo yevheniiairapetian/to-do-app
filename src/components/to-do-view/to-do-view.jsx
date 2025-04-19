@@ -29,6 +29,8 @@ export const ToDoView = () => {
 
   });
 
+
+
   $(document).ready(function () {
     function updateToggleVisibility() {
         if (window.innerWidth <= 768) {
