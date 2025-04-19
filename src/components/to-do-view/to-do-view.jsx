@@ -1,7 +1,9 @@
 import React from "react";
+import Sortable from "sortablejs";
+
 import $ from "jquery";
 import "jquery-ui-dist/jquery-ui";
-import "./js/jquery.ui.touch-punch.min";
+// import "./js/jquery.ui.touch-punch.min";
 import { Navbar, Button, Container, Row, Col, Nav, Image } from "react-bootstrap";
 import { Accordions } from "../accordions/accordions";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -75,21 +77,30 @@ $(document).ready(function () {
     
 
   });
-  $(".sortable").sortable({
-    handle: ".drag-handle",
-    touchAction: "none", // Stops browser interference
-    delay: 200, // Helps differentiate scrolling from dragging
-    forcePlaceholderSize: true // Ensures placeholder visibility
+  document.querySelectorAll(".sortable").forEach((list) => {
+    new Sortable(list, {
+        animation: 150, // Smooth dragging
+        ghostClass: "sortable-placeholder", // Highlights the dragged item
+        handle: ".drag-handle", // Only drag using handle
+        onEnd: function () {
+            saveLists(); // Save order changes
+        }
+    });
 });
 
-  $(".list-row").sortable({
-    items: ".new-list",
-    handle: ".drag-handle", // Only the drag handle can move lists
-    placeholder: "sortable-placeholder-list",
-    update: function (event, ui) {
-      saveLists();
-    }
+
+document.querySelectorAll(".list-row").forEach((list) => {
+  new Sortable(list, {
+      animation: 150, // Smooth dragging effect
+      ghostClass: "sortable-placeholder-list", // Visual placeholder
+      handle: ".drag-handle", // Restrict dragging to handle
+      group: "lists", // Allows cross-list dragging
+      onEnd: function () {
+          saveLists(); // Save changes when dragging stops
+      }
   });
+});
+
 
 });
 
@@ -107,14 +118,18 @@ $(document).ready(function () {
 
 
 
-    $(".list-row").sortable({
-      items: ".new-list",
-      handle: ".drag-handle", // Only the drag handle can move lists
-      placeholder: "sortable-placeholder-list",
-      update: function (event, ui) {
-        saveLists();
-      }
-    });
+    document.querySelectorAll(".list-row").forEach((list) => {
+      new Sortable(list, {
+          animation: 150, // Smooth dragging effect
+          ghostClass: "sortable-placeholder-list", // Visual placeholder
+          handle: ".drag-handle", // Restrict dragging to handle
+          group: "lists", // Allows cross-list dragging
+          onEnd: function () {
+              saveLists(); // Save changes when dragging stops
+          }
+      });
+  });
+  
   }
   );
 })
@@ -194,9 +209,10 @@ function createListElement(title, todos) {
   row.append(div);
 
   let dragHandle = $("<span class='drag-handle' title='Drag list'>☰</span>");
-  let listTitle = $("<h4 class='list-title' contenteditable='true' title='Edit list name'></h4>").text(title);
+  let listTitle = $("<h4 class='list-title' contenteditable='true' title='Edit list name'>Untitled List</h4>").text(title);
+  div.append(dragHandle);
 
-  div.append(dragHandle).append(listTitle);
+  div.append(listTitle);
 
 
 
@@ -250,14 +266,16 @@ function createListElement(title, todos) {
   div.append(ol);
 
   // Ensure this new list is sortable
-  ol.sortable({
-    connectWith: ".sortable",
-    placeholder: "sortable-placeholder",
-    receive: function (event, ui) {
-      saveLists(); // Save after an item moves into the new list
+  new Sortable(ol[0], { // Use [0] to pass the native DOM element
+    animation: 150, // Smooth dragging
+    ghostClass: "sortable-placeholder", // Visual placeholder when dragging
+    handle: ".drag-handle", // Users can only drag via the handle
+    group: "todos", // Allows moving to-dos between lists
+    onEnd: function () {
+        saveLists(); // Save order after dragging stops
     }
-  }).
-    disableSelection();
+});
+
 
 
   let btnNewToDo = $('<div class="button button-add" data-bs-toggle="tooltip" data-bs-title="Click to add the new list item">Add a To-do</div>');

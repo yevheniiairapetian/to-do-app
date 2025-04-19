@@ -23,8 +23,27 @@ html, body{
     pointer-events: auto !important;
 }
 
-.drag-handle{
-	cursor:grab;
+.drag-handle, .sortable li{
+	cursor:grab !important;
+}
+
+.drag-handle:active, .sortable li:active{
+	cursor:grabbing !important;
+}
+
+.copy-todo{
+	cursor:copy !important;
+
+}
+
+.delete-todo{
+	cursor:pointer !important;
+
+}
+
+.edit-todo{
+	cursor:text !important;
+
 }
 
 .app-container {
