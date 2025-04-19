@@ -16,6 +16,9 @@ html, body{
 .sortable {
     touch-action: none;
 }
+.sortable li {
+    pointer-events: auto !important;
+}
 
 .drag-handle{
 	cursor:grab;

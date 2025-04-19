@@ -69,12 +69,17 @@ $(document).ready(function () {
     },
     stop: function () {
       saveLists(); // Save new order after dragging stops
-    },
-    cancel: "input, button",
-    delay: 100, // Helps with accidental scrolling issues
-    scroll: false // Prevents browser auto-scrolling during touch drag
+    }
+    
 
   });
+  $(".sortable").sortable({
+    handle: ".drag-handle",
+    touchAction: "none", // Stops browser interference
+    delay: 200, // Helps differentiate scrolling from dragging
+    forcePlaceholderSize: true // Ensures placeholder visibility
+});
+
   $(".list-row").sortable({
     items: ".new-list",
     handle: ".drag-handle", // Only the drag handle can move lists
@@ -624,30 +629,30 @@ return (
     <Navigation />
     <Accordions />
 
-    <div onClick={add} className="button add-list ms-3" tabindex="4"
+    <div onClick={add} className="button add-list ms-3" tabIndex="4"
       data-bs-toggle="tooltip" data-bs-title="Click to add the new list">
       Add a New List
     </div>
 
-    <div class="toggle-view button" id="toggleViewBtn">
+    <div className="toggle-view button" id="toggleViewBtn">
       Toggle View
     </div>
-    <div class="row list-row">
+    <div className="row list-row">
 
     </div>
-    <div class="modal" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h4 class="modal-title fs-5" id="exampleModalLabel">Heads-up</h4>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+    <div className="modal" id="exampleModal" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div className="modal-dialog">
+        <div className="modal-content">
+          <div className="modal-header">
+            <h4 className="modal-title fs-5" id="exampleModalLabel">Heads-up</h4>
+            <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
-          <div class="modal-body">
-            <p class="dialog-paragraph">Please type in the new to-do and click <strong>"Add a To-do"
+          <div className="modal-body">
+            <p className="dialog-paragraph">Please type in the new to-do and click <strong>"Add a To-do"
               button</strong> or press <strong>"Enter"</strong> key.</p>
           </div>
-          <div class="modal-footer">
-            <button type="button" class="button" data-bs-dismiss="modal">Close</button>
+          <div className="modal-footer">
+            <button type="button" className="button" data-bs-dismiss="modal">Close</button>
           </div>
         </div>
       </div>
@@ -657,54 +662,54 @@ return (
 
     </div>
 
-    <div class="modal" id="exampleModal3" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h4 class="modal-title fs-5" id="exampleModalLabel">Heads-up</h4>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+    <div className="modal" id="exampleModal3" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div className="modal-dialog">
+        <div className="modal-content">
+          <div className="modal-header">
+            <h4 className="modal-title fs-5" id="exampleModalLabel">Heads-up</h4>
+            <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
-          <div class="modal-body">
-            <p class="dialog-paragraph">No to-dos where found in this list. Try adding one!</p>
+          <div className="modal-body">
+            <p className="dialog-paragraph">No to-dos where found in this list. Try adding one!</p>
           </div>
-          <div class="modal-footer">
-            <button type="button" class="button" data-bs-dismiss="modal">Close</button>
+          <div className="modal-footer">
+            <button type="button" className="button" data-bs-dismiss="modal">Close</button>
           </div>
         </div>
       </div>
     </div>
 
-    <div class="modal" id="exampleModal2" tabindex="-1" aria-labelledby="deleteConfirmLabel" aria-hidden="true">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="deleteConfirmLabel">Confirm Deletion</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+    <div className="modal" id="exampleModal2" tabIndex="-1" aria-labelledby="deleteConfirmLabel" aria-hidden="true">
+      <div className="modal-dialog">
+        <div className="modal-content">
+          <div className="modal-header">
+            <h5 className="modal-title" id="deleteConfirmLabel">Confirm Deletion</h5>
+            <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
-          <div class="modal-body">
+          <div className="modal-body">
             Are you sure you want to delete all to-dos in this list?
           </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-success" data-bs-dismiss="modal">Cancel</button>
-            <button type="button" class="btn btn-danger" id="confirmDeleteBtn">Delete</button>
+          <div className="modal-footer">
+            <button type="button" className="btn btn-success" data-bs-dismiss="modal">Cancel</button>
+            <button type="button" className="btn btn-danger" id="confirmDeleteBtn">Delete</button>
           </div>
         </div>
       </div>
     </div>
 
-    <div class="modal" id="exampleModal4" tabindex="-1" aria-labelledby="deleteConfirmLabel" aria-hidden="true">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="deleteConfirmLabel">Confirm Deletion</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+    <div className="modal" id="exampleModal4" tabIndex="-1" aria-labelledby="deleteConfirmLabel" aria-hidden="true">
+      <div className="modal-dialog">
+        <div className="modal-content">
+          <div className="modal-header">
+            <h5 className="modal-title" id="deleteConfirmLabel">Confirm Deletion</h5>
+            <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
-          <div class="modal-body">
+          <div className="modal-body">
             Are you sure you want to delete this list?
           </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-success" data-bs-dismiss="modal">Cancel</button>
-            <button type="button" class="btn btn-danger" id="confirmDeleteListBtn">Delete</button>
+          <div className="modal-footer">
+            <button type="button" className="btn btn-success" data-bs-dismiss="modal">Cancel</button>
+            <button type="button" className="btn btn-danger" id="confirmDeleteListBtn">Delete</button>
           </div>
         </div>
       </div>
