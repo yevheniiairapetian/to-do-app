@@ -46,9 +46,9 @@ if (isFirstVisit) {
                     <li>All edits are <span className='primary-to-do-color'><strong>automatically</strong></span> saved to the browser storage. </li>
 </ul>
 
-<h6>Changing list layout (<strong>desktop only</strong>)</h6>
+<h6>Changing list layout (<strong>landscape orientation only</strong>)</h6>
 <ul className='accordion-ul'>
-<li>Click on either the <svg width="24" height="30"viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="m0 0h24v24h-24z" fill="#fff" opacity="0" transform="matrix(-1 0 0 -1 24 24)"/><g fill="#231f20"><path d="m20 5a1 1 0 0 0 -1-1h-5a1 1 0 0 0 0 2h2.57l-3.28 3.29a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l3.29-3.29v2.58a1 1 0 0 0 1 1 1 1 0 0 0 1-1z"/><path d="m10.71 13.29a1 1 0 0 0 -1.42 0l-3.29 3.28v-2.57a1 1 0 0 0 -1-1 1 1 0 0 0 -1 1v5a1 1 0 0 0 1 1h5a1 1 0 0 0 0-2h-2.58l3.29-3.29a1 1 0 0 0 0-1.42z"/></g></svg> or <svg width="24" height="30" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="m0 0h24v24h-24z" fill="#fff" opacity="0" transform="matrix(-1 0 0 -1 24 24)"/><g fill="#231f20"><path d="m19 9h-2.58l3.29-3.29a1 1 0 1 0 -1.42-1.42l-3.29 3.28v-2.57a1 1 0 0 0 -1-1 1 1 0 0 0 -1 1v5a1 1 0 0 0 1 1h5a1 1 0 0 0 0-2z"/><path d="m10 13h-5a1 1 0 0 0 0 2h2.57l-3.28 3.29a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l3.29-3.29v2.58a1 1 0 0 0 1 1 1 1 0 0 0 1-1v-5a1 1 0 0 0 -1-1z"/></g></svg> icon just below the <strong>"Add a New List"</strong> button to toggle the lists layout. <strong>Expand</strong> to make each list take up a whole row space, <strong>collapse</strong> to make the lists take up 1/3 of the row. </li>
+<li>Click on either the <svg width="24" height="30"viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="m0 0h24v24h-24z" fill="#fff" opacity="0" transform="matrix(-1 0 0 -1 24 24)"/><g fill="#231f20"><path d="m20 5a1 1 0 0 0 -1-1h-5a1 1 0 0 0 0 2h2.57l-3.28 3.29a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l3.29-3.29v2.58a1 1 0 0 0 1 1 1 1 0 0 0 1-1z"/><path d="m10.71 13.29a1 1 0 0 0 -1.42 0l-3.29 3.28v-2.57a1 1 0 0 0 -1-1 1 1 0 0 0 -1 1v5a1 1 0 0 0 1 1h5a1 1 0 0 0 0-2h-2.58l3.29-3.29a1 1 0 0 0 0-1.42z"/></g></svg> or <svg width="24" height="30" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="m0 0h24v24h-24z" fill="#fff" opacity="0" transform="matrix(-1 0 0 -1 24 24)"/><g fill="#231f20"><path d="m19 9h-2.58l3.29-3.29a1 1 0 1 0 -1.42-1.42l-3.29 3.28v-2.57a1 1 0 0 0 -1-1 1 1 0 0 0 -1 1v5a1 1 0 0 0 1 1h5a1 1 0 0 0 0-2z"/><path d="m10 13h-5a1 1 0 0 0 0 2h2.57l-3.28 3.29a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l3.29-3.29v2.58a1 1 0 0 0 1 1 1 1 0 0 0 1-1v-5a1 1 0 0 0 -1-1z"/></g></svg> icon just below the <strong>"Add a New List"</strong> button to toggle the lists layout. <strong>Expand</strong> to make each list take up a separate row, <strong>collapse</strong> to make the lists go one-by-one in a row. </li>
 
 </ul>
 <h6>Deleting your data</h6>
@@ -95,10 +95,9 @@ if (isFirstVisit) {
                     to delete the whole list.</li>
                     <li>All edits are <span className='primary-to-do-color'><strong>automatically</strong></span> saved to the browser storage. </li>
 </ul>
-<h6>Changing list layout (<strong>desktop only</strong>)</h6>
+<h6>Changing list layout (<strong>landscape orientation only</strong>)</h6>
 <ul className='accordion-ul'>
-<li>Be default, the <strong>expanded list layout</strong> is enabled in the app which means each list takes up the whole space of a row. To toggle between layouts, check out the same section in the guide for <strong>laptop / desktop devices</strong> above</li>
-
+<li>Tap on either the <svg width="24" height="30"viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="m0 0h24v24h-24z" fill="#fff" opacity="0" transform="matrix(-1 0 0 -1 24 24)"/><g fill="#231f20"><path d="m20 5a1 1 0 0 0 -1-1h-5a1 1 0 0 0 0 2h2.57l-3.28 3.29a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l3.29-3.29v2.58a1 1 0 0 0 1 1 1 1 0 0 0 1-1z"/><path d="m10.71 13.29a1 1 0 0 0 -1.42 0l-3.29 3.28v-2.57a1 1 0 0 0 -1-1 1 1 0 0 0 -1 1v5a1 1 0 0 0 1 1h5a1 1 0 0 0 0-2h-2.58l3.29-3.29a1 1 0 0 0 0-1.42z"/></g></svg> or <svg width="24" height="30" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="m0 0h24v24h-24z" fill="#fff" opacity="0" transform="matrix(-1 0 0 -1 24 24)"/><g fill="#231f20"><path d="m19 9h-2.58l3.29-3.29a1 1 0 1 0 -1.42-1.42l-3.29 3.28v-2.57a1 1 0 0 0 -1-1 1 1 0 0 0 -1 1v5a1 1 0 0 0 1 1h5a1 1 0 0 0 0-2z"/><path d="m10 13h-5a1 1 0 0 0 0 2h2.57l-3.28 3.29a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l3.29-3.29v2.58a1 1 0 0 0 1 1 1 1 0 0 0 1-1v-5a1 1 0 0 0 -1-1z"/></g></svg> icon just below the <strong>"Add a New List"</strong> button to toggle the lists layout. <strong>Expand</strong> to make each list take up a separate row, <strong>collapse</strong> to make the lists go one-by-one in a row. </li>
 </ul>
 <h6>Deleting your data</h6>
 
