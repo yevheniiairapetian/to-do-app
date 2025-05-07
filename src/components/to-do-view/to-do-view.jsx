@@ -36,7 +36,7 @@ export const ToDoView = () => {
   $(document).ready(function () {
     function updateToggleVisibility() {
         if (window.innerWidth <= 768) {
-            $("#toggleViewBtn").show().text("List Expand Mode Enabled"); // Show with text
+            $("#toggleViewBtn").show().text("Lists Expanded"); // Show with text
         } else {
             $("#toggleViewBtn").html('<p title="Expand lists"><svg width="24" height="30" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="m0 0h24v24h-24z" fill="#fff" opacity="0" transform="matrix(-1 0 0 -1 24 24)"/><g fill="#231f20"><path d="m20 5a1 1 0 0 0 -1-1h-5a1 1 0 0 0 0 2h2.57l-3.28 3.29a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l3.29-3.29v2.58a1 1 0 0 0 1 1 1 1 0 0 0 1-1z"/><path d="m10.71 13.29a1 1 0 0 0 -1.42 0l-3.29 3.28v-2.57a1 1 0 0 0 -1-1 1 1 0 0 0 -1 1v5a1 1 0 0 0 1 1h5a1 1 0 0 0 0-2h-2.58l3.29-3.29a1 1 0 0 0 0-1.42z"/></g></svg></p>'); // Show SVG icon on larger screens
         }
@@ -54,10 +54,10 @@ export const ToDoView = () => {
 
             if (listContainer.hasClass("expanded-list-row")) {
                 listContainer.removeClass("expanded-list-row");
-                $(this).html('<p title="Expand lists"><svg width="24" height="30" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="m0 0h24v24h-24z" fill="#fff" opacity="0" transform="matrix(-1 0 0 -1 24 24)"/><g fill="#231f20"><path d="m19 9h-2.58l3.29-3.29a1 1 0 1 0 -1.42-1.42l-3.29 3.28v-2.57a1 1 0 0 0 -1-1 1 1 0 0 0 -1 1v5a1 1 0 0 0 1 1h5a1 1 0 0 0 0-2z"/><path d="m10 13h-5a1 1 0 0 0 0 2h2.57l-3.28 3.29a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l3.29-3.29v2.58a1 1 0 0 0 1 1 1 1 0 0 0 1-1v-5a1 1 0 0 0 -1-1z"/></g></svg></p>'); // Collapsed list icon
+                $(this).html('<p title="Expand lists"><svg viewBox="0 0 24 24" width="24px" xmlns="http://www.w3.org/2000/svg"><path d="m0 0h24v24h-24z" fill="#fff" opacity="0" transform="matrix(-1 0 0 -1 24 24)"/><g fill="#231f20"><path d="m20 5a1 1 0 0 0 -1-1h-5a1 1 0 0 0 0 2h2.57l-3.28 3.29a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l3.29-3.29v2.58a1 1 0 0 0 1 1 1 1 0 0 0 1-1z"/><path d="m10.71 13.29a1 1 0 0 0 -1.42 0l-3.29 3.28v-2.57a1 1 0 0 0 -1-1 1 1 0 0 0 -1 1v5a1 1 0 0 0 1 1h5a1 1 0 0 0 0-2h-2.58l3.29-3.29a1 1 0 0 0 0-1.42z"/></g></svg></p>'); // Collapsed list icon
             } else {
                 listContainer.addClass("expanded-list-row");
-                $(this).html('<p title="Collapse lists"><svg width="24" height="30" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="m0 0h24v24h-24z" fill="#fff" opacity="0" transform="matrix(-1 0 0 -1 24 24)"/><g fill="#231f20"><path d="m19 9h-2.58l3.29-3.29a1 1 0 1 0 -1.42-1.42l-3.29 3.28v-2.57a1 1 0 0 0 -1-1 1 1 0 0 0 -1 1v5a1 1 0 0 0 1 1h5a1 1 0 0 0 0-2z"/><path d="m10 13h-5a1 1 0 0 0 0 2h2.57l-3.28 3.29a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l3.29-3.29v2.58a1 1 0 0 0 1 1 1 1 0 0 0 1-1v-5a1 1 0 0 0 -1-1z"/></g></svg></p>'); // Expanded grid icon
+                $(this).html('<p title="Collapse lists"><svg viewBox="0 0 24 24" width="24px" xmlns="http://www.w3.org/2000/svg"><path d="m0 0h24v24h-24z" fill="#fff" opacity="0" transform="matrix(-1 0 0 -1 24 24)"/><g fill="#231f20"><path d="m19 9h-2.58l3.29-3.29a1 1 0 1 0 -1.42-1.42l-3.29 3.28v-2.57a1 1 0 0 0 -1-1 1 1 0 0 0 -1 1v5a1 1 0 0 0 1 1h5a1 1 0 0 0 0-2z"/><path d="m10 13h-5a1 1 0 0 0 0 2h2.57l-3.28 3.29a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l3.29-3.29v2.58a1 1 0 0 0 1 1 1 1 0 0 0 1-1v-5a1 1 0 0 0 -1-1z"/></g></svg></p>'); // Expanded grid icon
             }
         }
     });
@@ -463,8 +463,11 @@ function createToDoElement(text, completed) {
   let copyButton = $('<span title="Make a copy" class="copy-todo"> <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2" /><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" /></svg></span>');
 
   copyButton.on('click', function () {
-    let duplicatedLi = createToDoElement(text, li.hasClass("strike")); // Duplicate the to-do with the same status
-    li.after(duplicatedLi); // Paste below the original to-do
+    // Grab the latest edited text from the DOM
+    let updatedText = li.contents().not(copyButton).not(editButton).not(deleteButton).text().trim();
+    
+    let duplicatedLi = createToDoElement(updatedText, li.hasClass("strike")); // Copy latest text
+    li.after(duplicatedLi); // Insert the cloned to-do after the original one
     saveLists();
 
     // Update status message
@@ -475,7 +478,8 @@ function createToDoElement(text, completed) {
     setTimeout(() => {
       updateEdits.text("All your edits are automatically saved").show();
     }, 2800);
-  });
+});
+
 
 
   li.append(copyButton);

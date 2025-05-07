@@ -70,36 +70,59 @@ const handleCancelReset = () => {
     }
   };
 
-  // Handle first-time setup (username & profile picture)
-  const handleUserSetup = () => {
+  const handleUserSetup = (event) => {
+    event.preventDefault(); // ✅ Stop unintended form submission
+
     const usernameInput = document.getElementById("usernameInput").value.trim();
     const imageFile = document.getElementById("userImage").files[0];
     const usernameRegex = /^[a-zA-Z0-9]{1,10}$/;
     let validTypes = ["image/jpeg", "image/png"];
-    let maxSize = 500 * 1024;
+    let maxSize = 500 * 1024; // 500KB limit
 
+    // Validate username
     if (!usernameRegex.test(usernameInput)) {
-      setUsername('guest');
-      return;
+        setUsername("guest");
+        return;
     }
 
-    if (imageFile && validTypes.includes(imageFile.type) && imageFile.size <= maxSize) {
-      let reader = new FileReader();
-      reader.onload = (e) => {
-        let imageData = e.target.result;
-        localStorage.setItem("userImage", imageData);
-        document.getElementById("navProfilePic").src = imageData;
-      };
-      reader.readAsDataURL(imageFile);
+    // Validate image file
+    if (imageFile) {
+        if (!validTypes.includes(imageFile.type)) {
+            $("#imageErrorMessage").text("Invalid file type! Only JPG and PNG are allowed.").show();
+            $("#userImage").val(""); // Clear input field
+            return;
+        }
+
+        if (imageFile.size > maxSize) {
+            $("#imageErrorMessage").text("Error: Image size exceeds 500KB. Please choose a smaller file.").show();
+            $("#userImage").val(""); // Clear input field
+            return;
+        }
+    }
+
+    // ✅ If validation passes, proceed with saving
+    if (imageFile) {
+        let reader = new FileReader();
+        reader.onload = (e) => {
+            let imageData = e.target.result;
+            localStorage.setItem("userImage", imageData);
+            document.getElementById("navProfilePic").src = imageData;
+        };
+        reader.readAsDataURL(imageFile);
     }
 
     localStorage.setItem("username", usernameInput);
     setUsername(usernameInput);
     setInputValue(usernameInput);
     setShowModal(false);
-    // **Reload the page to apply changes**
+
     window.location.reload();
-  };
+};
+
+// ✅ Ensure event binding doesn't happen multiple times
+$("#submitProfileBtn").off("click").on("click", handleUserSetup);
+
+  
 
   // Search filtering logic
   const handleSearchChange = (event) => {
@@ -188,8 +211,13 @@ const handleCancelReset = () => {
 
                   <input type="text" id="usernameInput" maxLength="10" placeholder="Enter username" className="form-control" />
 
-                  <label className="mt-3 mb-1">Upload Profile Picture <em>(optional)</em> <br />(JPG/PNG, max 500KB):</label>
-                  <input type="file" id="userImage" accept=".jpg, .jpeg, .png" className="form-control" />
+                  <label className="mt-3 mb-1">
+  Upload Profile Picture <em>(optional)</em> <br />
+  (JPG/PNG, max 500KB):
+</label>
+<input type="file" id="userImage" accept=".jpg, .jpeg, .png" className="form-control" />
+<p id="imageErrorMessage" class="text-danger" style={{ display: "none" }}></p>
+
                   <img id="imagePreview" src="https://th.bing.com/th/id/OIP.lvbbUeXuqJfLLn8UKNFoZgAAAA?w=138&h=150&c=7&r=0&o=5&dpr=1.3&pid=1.7" className="rounded-circle mt-3" width="40" height="40" />
                 </div>
                 <div className="modal-footer">
