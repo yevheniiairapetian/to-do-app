@@ -332,6 +332,14 @@ border-bottom-left-radius: 0px 0px;
 	
 }
 
+.username-asterisk{
+	color: red;
+}
+
+.username-info{
+	font-size: 14px;
+}
+
 .expanded-list-row ol.sortable{
 	padding-left: 0;
 	padding-right: 0;

@@ -203,22 +203,27 @@ $("#submitProfileBtn").off("click").on("click", handleUserSetup);
             <div className="modal-dialog">
               <div className="modal-content">
                 <div className="modal-header">
-                  <h6 className="modal-title">Set Username & Profile Picture</h6>
+                  <h6 className="modal-title">Profile Set-Up</h6>
                   <button type="button" className="btn-close" onClick={() => setShowModal(false)}></button>
                 </div>
                 <div className="modal-body">
-                  <label className="mt-3 mb-1">Enter Username <em></em> <br />(Use 1-10 alphanumeric characters.):</label>
+                  <label className="mt-3 mb-1">Username <em className="username-asterisk">*</em> <br /><span className="username-info">(1-10 alphanumeric characters):</span></label>
 
                   <input type="text" id="usernameInput" maxLength="10" placeholder="Enter username" className="form-control" />
 
                   <label className="mt-3 mb-1">
-  Upload Profile Picture <em>(optional)</em> <br />
-  (JPG/PNG, max 500KB):
+  Profile Picture <em></em> <br />
+  <span className="username-info">(JPG/PNG, max 500KB):</span>
 </label>
 <input type="file" id="userImage" accept=".jpg, .jpeg, .png" className="form-control" />
 <p id="imageErrorMessage" class="text-danger" style={{ display: "none" }}></p>
 
                   <img id="imagePreview" src="https://i.postimg.cc/RVQjYXKm/user-circle-alt-256x256.png" className="rounded-circle mt-3" width="40" height="40" />
+<br/>
+<br/>
+
+<span className="username-info"><em><em className="username-asterisk">*</em> Fields marked with an asterisk are required</em></span>
+
                 </div>
                 <div className="modal-footer">
                   <button className="btn btn-primary" onClick={handleUserSetup}>Save</button>
