@@ -12,7 +12,7 @@ export const Navigation = () => {
   const [showModal, setShowModal] = useState(!localStorage.getItem("username")); // Show modal only on first visit
   const [searchQuery, setSearchQuery] = useState("");
   const [showDeleteImageModal, setShowDeleteImageModal] = useState(false);
-  const [userImage, setUserImage] = useState(localStorage.getItem("userImage") || "https://th.bing.com/th/id/OIP.lvbbUeXuqJfLLn8UKNFoZgAAAA?w=138&h=150&c=7&r=0&o=5&dpr=1.3&pid=1.7");
+  const [userImage, setUserImage] = useState(localStorage.getItem("userImage") || "https://i.postimg.cc/RVQjYXKm/user-circle-alt-256x256.png");
   const [showResetModal, setShowResetModal] = useState(false);
 
 const handleResetApp = () => {
@@ -35,16 +35,16 @@ const handleCancelReset = () => {
   
   const handleDeleteImage = () => {
       localStorage.removeItem("userImage"); // Remove image from storage
-      setUserImage("https://th.bing.com/th/id/OIP.lvbbUeXuqJfLLn8UKNFoZgAAAA?w=138&h=150&c=7&r=0&o=5&dpr=1.3&pid=1.7"); // Set placeholder
+      setUserImage("https://i.postimg.cc/RVQjYXKm/user-circle-alt-256x256.png"); // Set placeholder
       setShowDeleteImageModal(false); // Close modal
   };
   
   // Determines whether to show pencil icon
-  const showPencilIcon = userImage !== "https://th.bing.com/th/id/OIP.lvbbUeXuqJfLLn8UKNFoZgAAAA?w=138&h=150&c=7&r=0&o=5&dpr=1.3&pid=1.7";
+  const showPencilIcon = userImage !== "https://i.postimg.cc/RVQjYXKm/user-circle-alt-256x256.png";
   useEffect(() => {
     document.getElementById("navProfilePic").src =
       localStorage.getItem("userImage") ||
-      "https://th.bing.com/th/id/OIP.lvbbUeXuqJfLLn8UKNFoZgAAAA?w=138&h=150&c=7&r=0&o=5&dpr=1.3&pid=1.7";
+      "https://i.postimg.cc/RVQjYXKm/user-circle-alt-256x256.png";
 
     let storedUsername = localStorage.getItem("username");
     if (storedUsername) {
@@ -218,7 +218,7 @@ $("#submitProfileBtn").off("click").on("click", handleUserSetup);
 <input type="file" id="userImage" accept=".jpg, .jpeg, .png" className="form-control" />
 <p id="imageErrorMessage" class="text-danger" style={{ display: "none" }}></p>
 
-                  <img id="imagePreview" src="https://th.bing.com/th/id/OIP.lvbbUeXuqJfLLn8UKNFoZgAAAA?w=138&h=150&c=7&r=0&o=5&dpr=1.3&pid=1.7" className="rounded-circle mt-3" width="40" height="40" />
+                  <img id="imagePreview" src="https://i.postimg.cc/RVQjYXKm/user-circle-alt-256x256.png" className="rounded-circle mt-3" width="40" height="40" />
                 </div>
                 <div className="modal-footer">
                   <button className="btn btn-primary" onClick={handleUserSetup}>Save</button>
@@ -260,6 +260,7 @@ $("#submitProfileBtn").off("click").on("click", handleUserSetup);
            {/* Profile Picture (Now Clickable) */}
         <div style={{ position: "relative", display: "inline-block" }}>
             <img 
+                title={"Hello, "+ username + "!"}
                 id="navProfilePic" 
                 src={userImage}
                 alt="Profile" 
