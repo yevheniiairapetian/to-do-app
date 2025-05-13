@@ -19,14 +19,14 @@ This repository contains a simple responsive to-do app developed with React, jQu
 - The initial set-up checks the username and profile image on validity (value and length for the username and image type and size for the profile image) 
 - The username can be edited upon a click
 - The app checks if the username is empty (restores the last change if empty)
-- The profile image can be deleted after initial set-up
+- The profile image can be deleted after initial set-up \ set automatically to a default image if not set or deleted
 
 #### Working with lists
 
 - Create \ edit\ delete \ to-do lists
 - Add \ edit \ copy to-dos (one by one) and delete to-dos (one by one or all at once)
-- Rearrange to-dos \ lists
-- Drop to-dos from one list to another
+- Rearrange to-dos (desktop) \ lists (desktop\mobile)
+- Drop to-dos from one list to another (desktop)
 - Mark to-dos as done (strike through)
 - The app checks list titles on empty data (restores the last change if empty)
 - Upon deleting the list \ all to-dos the user can confirm \ cancel their choice
@@ -38,8 +38,8 @@ This repository contains a simple responsive to-do app developed with React, jQu
 
 #### Changing list layouts
 
-- Users can collapse \ expand lists (on desktop devices > 768px screen width). Expanding makes lists wider and taking each a separate row) \ collapsing makes lists narrower and taking each 1/3 of the row width.
-- On smaller screens the lists are by default expanded.
+- Users can collapse \ expand lists (on laptop\desktop screens or in mobile landscape mode). Expanding makes lists wider and stacked up in a column) \ collapsing makes lists narrower and grouped in a row.
+- On portrait orientations the lists are by default expanded.
 
   
 #### UI / UX
@@ -53,6 +53,7 @@ This repository contains a simple responsive to-do app developed with React, jQu
 #### Auto-save and PWA functionality
 
 - All user changes are automatically saved to local storage after any to-do \ list edits (no need to click any buttons to save)
+- The username \ profile image also get stored after all changes made
 - The app can be installed on desktop \ mobile devices resembling a native-like experince, ease of use, and offline notification
 
 #### Resetting data
