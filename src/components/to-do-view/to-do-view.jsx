@@ -14,6 +14,7 @@ import { Navigation } from "../navigation/navigation.jsx";
 import useSound from 'use-sound';
 // import Sweep from './src/sweep.wav';
 import { useSoundSettings } from './../soundContext/soundContext';
+import noLists from './img/no-lists.svg';
 
 
 export const ToDoView = () => {
@@ -30,6 +31,18 @@ export const ToDoView = () => {
 
 
   });
+
+  
+function updateListPlaceholder() {
+  const hasLists = $(".list-row .new-list").length > 0;
+  $(".no-lists-placeholder").toggle(!hasLists);
+}
+
+
+  $(document).ready(function () {
+  updateListPlaceholder();
+});
+
 
 
 
@@ -174,6 +187,9 @@ $(document).ready(function () {
 $(document).ready(() => {
   loadLists();
 });
+
+
+
 
 function saveLists() {
   let lists = [];
@@ -430,11 +446,14 @@ function createListElement(title, todos) {
       localStorage.setItem("savedLists", JSON.stringify(savedLists));
 
       listElement.remove(); // Remove from UI
+                updateListPlaceholder()
+
       const audio = new Audio("/trash.mp3");
       audio.preload = "auto"; // Adjust path if needed
       audio.play();
       $("#deleteListModal").hide(600); // Hide the modal
       saveLists(); // Save updates
+
     });
   });
 
@@ -637,6 +656,7 @@ function add() {
   localStorage.setItem('savedLists', JSON.stringify(savedLists));
 
   createListElement(newList.title, newList.todos);
+  updateListPlaceholder()
 
   $(".sortable").sortable({  // Reinitialize sortable after adding a list
     connectWith: ".sortable",
@@ -661,7 +681,12 @@ return (
     <div className="toggle-view button" id="toggleViewBtn">
       Toggle View
     </div>
+    <div className="no-lists-placeholder text-center mt-4" style={{ display: "none" }}>
+  <img src={noLists} alt="No lists yet" />
+  {/* <p>No lists here yet. Click “Add a New List” to get started!</p> */}
+</div>
     <div className="row list-row">
+
 
     </div>
     <div className="modal" id="exampleModal" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
