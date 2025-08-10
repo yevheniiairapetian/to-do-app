@@ -682,7 +682,7 @@ return (
       Toggle View
     </div>
     <div className="no-lists-placeholder text-center mt-4" style={{ display: "none" }}>
-  <img src={noLists} alt="No lists yet" />
+  <img className="lists-placeholder" src={noLists} alt="No lists yet" />
   {/* <p>No lists here yet. Click “Add a New List” to get started!</p> */}
 </div>
     <div className="row list-row">
