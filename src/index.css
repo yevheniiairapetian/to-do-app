@@ -188,6 +188,11 @@ h3{	background-color:#cfe2ff;
 	transform:translate(10px, 10px);
 } */
 
+.highlight {
+  background-color: #ffeeba;
+  transition: background-color 0.8s ease;
+}
+
 
 .button{
 	
@@ -330,6 +335,35 @@ border-bottom-left-radius: 0px 0px;
 	background-color: transparent;
 	color: black;
 	
+}
+
+  .expanded-list-row .clone-list{
+	position:absolute;
+	top: 40px;
+	
+	right:20%;
+	background-color: transparent;
+	color: black;
+	
+}
+
+.danger-button {
+		width:156px;
+	/* margin-bottom: 16px; */
+height:41px;
+  background-color: #e74c3c;
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  text-align: center;
+}
+
+.list-control-buttons{
+	display: flex;
+	flex-direction: row;
+	align-items: center;
 }
 
 .username-asterisk{
@@ -496,6 +530,15 @@ li:hover{
 	top: -10px;
 	background-color: transparent;
 	color: black;
+	
+}
+
+.clone-list{
+	position:absolute;
+	top: 40px;
+	background-color: transparent;
+	color: black;
+	width:46px;
 }
 
 .list-title{
@@ -662,7 +705,7 @@ div > crossOutButton {
 }
 
 @media screen and (min-width:276px) and (max-width:320px){
-	div.add-list{
+	div.add-list, .danger-button{
 		width:90%;
 	}
 	input.save-edits{
